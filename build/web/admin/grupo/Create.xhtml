@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GrupoCreateDlg" widgetVar="GrupoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.CreateGrupoTitle}">
+            <h:form id="GrupoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{grupoController.selected != null}">
+                        <p:outputLabel value="#{bundleGeneral.CreateGrupoLabel_tecLogin}" for="tecLogin" />
+                        <p:inputText id="tecLogin" value="#{grupoController.selected.tecLogin}" title="#{bundleGeneral.CreateGrupoTitle_tecLogin}" />
+                        <p:outputLabel value="#{bundleGeneral.CreateGrupoLabel_tecnico}" for="tecnico" />
+                        <p:selectOneMenu id="tecnico" value="#{grupoController.selected.tecnico}" required="true" requiredMessage="#{bundleGeneral.EditGrupoRequiredMessage_tecnico}">
+                            <f:selectItems value="#{tecnicoController.itemsAvailableSelectOne}"
+                                           var="tecnicoItem"
+                                           itemValue="#{tecnicoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleGeneral.CreateGrupoLabel_rol}" for="rol" />
+                        <p:selectOneMenu id="rol" value="#{grupoController.selected.rol}" required="true" requiredMessage="#{bundleGeneral.EditGrupoRequiredMessage_rol}">
+                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
+                                           var="rolItem"
+                                           itemValue="#{rolItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{grupoController.create}" value="#{bundleGeneral.Save}" update="display,:GrupoListForm:datalist,:growl" oncomplete="handleSubmit(args,'GrupoCreateDialog');"/>
+                    <p:commandButton value="#{bundleGeneral.Cancel}" onclick="GrupoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

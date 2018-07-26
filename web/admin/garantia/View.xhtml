@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GarantiaViewDlg" widgetVar="GarantiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.ViewGarantiaTitle}">
+            <h:form id="GarantiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{garantiaController.selected != null}">
+                        <h:outputText value="#{bundleGeneral.ViewGarantiaLabel_garId}"/>
+                        <h:outputText value="#{garantiaController.selected.garId}" title="#{bundleGeneral.ViewGarantiaTitle_garId}"/>
+                        <h:outputText value="#{bundleGeneral.ViewGarantiaLabel_garIdNumordenalmacen}"/>
+                        <h:outputText value="#{garantiaController.selected.garIdNumordenalmacen}" title="#{bundleGeneral.ViewGarantiaTitle_garIdNumordenalmacen}"/>
+                        <h:outputText value="#{bundleGeneral.ViewGarantiaLabel_artIdNumorden}"/>
+                        <h:outputText value="#{garantiaController.selected.artIdNumorden}" title="#{bundleGeneral.ViewGarantiaTitle_artIdNumorden}"/>
+                        <h:outputText value="#{bundleGeneral.ViewGarantiaLabel_almId}"/>
+                        <h:outputText value="#{garantiaController.selected.almId}" title="#{bundleGeneral.ViewGarantiaTitle_almId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleGeneral.Close}" onclick="GarantiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

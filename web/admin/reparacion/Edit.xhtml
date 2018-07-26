@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReparacionEditDlg" widgetVar="ReparacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.EditReparacionTitle}">
+            <h:form id="ReparacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reparacionController.selected != null}">
+                        <p:outputLabel value="#{bundleGeneral.EditReparacionLabel_repId}" for="repId" />
+                        <p:inputText id="repId" value="#{reparacionController.selected.repId}" title="#{bundleGeneral.EditReparacionTitle_repId}" required="true" requiredMessage="#{bundleGeneral.EditReparacionRequiredMessage_repId}"/>
+                        <p:outputLabel value="#{bundleGeneral.EditReparacionLabel_repReportetecnico}" for="repReportetecnico" />
+                        <p:inputText id="repReportetecnico" value="#{reparacionController.selected.repReportetecnico}" title="#{bundleGeneral.EditReparacionTitle_repReportetecnico}" />
+                        <p:outputLabel value="#{bundleGeneral.EditReparacionLabel_repPrecio}" for="repPrecio" />
+                        <p:inputText id="repPrecio" value="#{reparacionController.selected.repPrecio}" title="#{bundleGeneral.EditReparacionTitle_repPrecio}" />
+                        <p:outputLabel value="#{bundleGeneral.EditReparacionLabel_estId}" for="estId" />
+                        <p:selectOneMenu id="estId" value="#{reparacionController.selected.estId}" required="true" requiredMessage="#{bundleGeneral.EditReparacionRequiredMessage_estId}">
+                            <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadosservicioController.itemsAvailableSelectOne}"
+                                           var="estIdItem"
+                                           itemValue="#{estIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleGeneral.EditReparacionLabel_artIdNumorden}" for="artIdNumorden" />
+                        <p:selectOneMenu id="artIdNumorden" value="#{reparacionController.selected.artIdNumorden}" required="true" requiredMessage="#{bundleGeneral.EditReparacionRequiredMessage_artIdNumorden}">
+                            <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
+                            <f:selectItems value="#{articuloController.itemsAvailableSelectOne}"
+                                           var="artIdNumordenItem"
+                                           itemValue="#{artIdNumordenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reparacionController.update}" value="#{bundleGeneral.Save}" update="display,:ReparacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReparacionEditDialog');"/>
+                    <p:commandButton value="#{bundleGeneral.Cancel}" onclick="ReparacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

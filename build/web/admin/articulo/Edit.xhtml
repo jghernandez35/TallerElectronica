@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticuloEditDlg" widgetVar="ArticuloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.EditArticuloTitle}">
+            <h:form id="ArticuloEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articuloController.selected != null}">
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artIdNumorden}" for="artIdNumorden" />
+                        <p:inputText id="artIdNumorden" value="#{articuloController.selected.artIdNumorden}" title="#{bundleGeneral.EditArticuloTitle_artIdNumorden}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_artIdNumorden}"/>
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artModelo}" for="artModelo" />
+                        <p:inputText id="artModelo" value="#{articuloController.selected.artModelo}" title="#{bundleGeneral.EditArticuloTitle_artModelo}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artSerial}" for="artSerial" />
+                        <p:inputText id="artSerial" value="#{articuloController.selected.artSerial}" title="#{bundleGeneral.EditArticuloTitle_artSerial}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artFalla}" for="artFalla" />
+                        <p:inputTextarea rows="4" cols="30" id="artFalla" value="#{articuloController.selected.artFalla}" title="#{bundleGeneral.EditArticuloTitle_artFalla}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artAccesorios}" for="artAccesorios" />
+                        <p:inputTextarea rows="4" cols="30" id="artAccesorios" value="#{articuloController.selected.artAccesorios}" title="#{bundleGeneral.EditArticuloTitle_artAccesorios}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artObservaciones}" for="artObservaciones" />
+                        <p:inputTextarea rows="4" cols="30" id="artObservaciones" value="#{articuloController.selected.artObservaciones}" title="#{bundleGeneral.EditArticuloTitle_artObservaciones}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artGarantia}" for="artGarantia" />
+                        <p:inputText id="artGarantia" value="#{articuloController.selected.artGarantia}" title="#{bundleGeneral.EditArticuloTitle_artGarantia}" />
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artFechaingreso}" for="artFechaingreso" />
+                        <p:calendar id="artFechaingreso" pattern="MM/dd/yyyy" value="#{articuloController.selected.artFechaingreso}" title="#{bundleGeneral.EditArticuloTitle_artFechaingreso}"  showOn="button"/>
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_marIdMarca}" for="marIdMarca" />
+                        <p:selectOneMenu id="marIdMarca" value="#{articuloController.selected.marIdMarca}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_marIdMarca}">
+                            <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
+                            <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
+                                           var="marIdMarcaItem"
+                                           itemLabel="#{marIdMarcaItem.marNombre}"
+                                           itemValue="#{marIdMarcaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_tipIdTipoArticulo}" for="tipIdTipoArticulo" />
+                        <p:selectOneMenu id="tipIdTipoArticulo" value="#{articuloController.selected.tipIdTipoArticulo}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_tipIdTipoArticulo}">
+                            <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoarticuloController.itemsAvailableSelectOne}"
+                                           var="tipIdTipoArticuloItem"
+                                           itemLabel="#{tipIdTipoArticuloItem.tipNombre}"
+                                           itemValue="#{tipIdTipoArticuloItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_cliId}" for="cliId" />
+                        <p:selectOneMenu id="cliId" value="#{articuloController.selected.cliId}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_cliId}">
+                            <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="cliIdItem"
+                                           itemLabel="#{cliIdItem.cliNombres}"
+                                           itemValue="#{cliIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{articuloController.update}" value="#{bundleGeneral.Save}" update="display,:ArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ArticuloEditDialog');"/>
+                    <p:commandButton value="#{bundleGeneral.Cancel}" onclick="ArticuloEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

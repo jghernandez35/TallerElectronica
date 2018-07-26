@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TecnicoViewDlg" widgetVar="TecnicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.ViewTecnicoTitle}">
+            <h:form id="TecnicoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tecnicoController.selected != null}">
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecId}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecId}" title="#{bundleGeneral.ViewTecnicoTitle_tecId}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecCedula}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecCedula}" title="#{bundleGeneral.ViewTecnicoTitle_tecCedula}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecNombres}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecNombres}" title="#{bundleGeneral.ViewTecnicoTitle_tecNombres}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecApellidos}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecApellidos}" title="#{bundleGeneral.ViewTecnicoTitle_tecApellidos}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecCelular}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecCelular}" title="#{bundleGeneral.ViewTecnicoTitle_tecCelular}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecDireccion}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecDireccion}" title="#{bundleGeneral.ViewTecnicoTitle_tecDireccion}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecLogin}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecLogin}" title="#{bundleGeneral.ViewTecnicoTitle_tecLogin}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecContrasena}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecContrasena}" title="#{bundleGeneral.ViewTecnicoTitle_tecContrasena}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecTipousuario}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecTipousuario}" title="#{bundleGeneral.ViewTecnicoTitle_tecTipousuario}"/>
+                        <h:outputText value="#{bundleGeneral.ViewTecnicoLabel_tecEstado}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecEstado}" title="#{bundleGeneral.ViewTecnicoTitle_tecEstado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleGeneral.Close}" onclick="TecnicoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

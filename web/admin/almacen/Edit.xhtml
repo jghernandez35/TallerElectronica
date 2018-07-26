@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AlmacenEditDlg" widgetVar="AlmacenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.EditAlmacenTitle}">
+            <h:form id="AlmacenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{almacenController.selected != null}">
+                        <p:outputLabel value="#{bundleGeneral.EditAlmacenLabel_almId}" for="almId" />
+                        <p:inputText id="almId" value="#{almacenController.selected.almId}" title="#{bundleGeneral.EditAlmacenTitle_almId}" required="true" requiredMessage="#{bundleGeneral.EditAlmacenRequiredMessage_almId}"/>
+                        <p:outputLabel value="#{bundleGeneral.EditAlmacenLabel_almNombre}" for="almNombre" />
+                        <p:inputText id="almNombre" value="#{almacenController.selected.almNombre}" title="#{bundleGeneral.EditAlmacenTitle_almNombre}" />
+                        <p:outputLabel value="#{bundleGeneral.EditAlmacenLabel_almEstado}" for="almEstado" />
+                        <p:inputText id="almEstado" value="#{almacenController.selected.almEstado}" title="#{bundleGeneral.EditAlmacenTitle_almEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{almacenController.update}" value="#{bundleGeneral.Save}" update="display,:AlmacenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AlmacenEditDialog');"/>
+                    <p:commandButton value="#{bundleGeneral.Cancel}" onclick="AlmacenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
