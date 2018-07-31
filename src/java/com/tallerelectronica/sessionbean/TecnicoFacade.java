@@ -6,9 +6,11 @@
 package com.tallerelectronica.sessionbean;
 
 import com.tallerelectronica.entidades.Tecnico;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,51 @@ public class TecnicoFacade extends AbstractFacade<Tecnico> {
         super(Tecnico.class);
     }
     
+    /*public boolean buscarPorEmail(String email) {
+        Query query = getEntityManager().createNamedQuery("Usuario.findByEmail");
+        query.setParameter("email", email);
+        List<Tecnico> resultList = query.getResultList();
+        if (resultList.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }*/
+    
+    public boolean buscarTecnicoPorLoginBool(String tecLogin) {
+
+        Query query = getEntityManager().createNamedQuery("Tecnico.findByTecLogin");
+        query.setParameter("tecLogin", tecLogin);
+        List<Tecnico> resultList = query.getResultList();
+        if (resultList.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public Tecnico buscarPorLogin(String tecLogin) {
+
+        Query query = getEntityManager().createNamedQuery("Tecnico.findByTecLogin");
+        query.setParameter("tecLogin", tecLogin);
+        List<Tecnico> resultList = query.getResultList();
+        if (resultList.size() > 0) {
+            return resultList.get(0)
+                    ;
+        } else {
+            return null;
+        }
+    }    
+    
+    public boolean buscarPorNumeroIdentificacion(String tecCedula) {
+        Query buscarIden = getEntityManager().createNamedQuery("Tecnico.findByTecCedula");
+        buscarIden.setParameter("tecCedula", tecCedula);
+        List<Tecnico> lista= buscarIden.getResultList();
+
+        if(lista.size()==0){
+            return false;
+        }else{
+           return true;
+        }
+    }    
 }
