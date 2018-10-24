@@ -2,6 +2,7 @@ package com.tallerelectronica.managedbean;
 
 import com.tallerelectronica.entidades.Articulo;
 import com.tallerelectronica.managedbean.util.JsfUtil;
+import com.tallerelectronica.managedbean.CargarVistaController;
 import com.tallerelectronica.managedbean.util.JsfUtil.PersistAction;
 import com.tallerelectronica.sessionbean.ArticuloFacade;
 
@@ -27,7 +28,7 @@ public class ArticuloController implements Serializable {
     private com.tallerelectronica.sessionbean.ArticuloFacade ejbFacade;
     private List<Articulo> items = null;
     private Articulo selected;
-
+    
     public ArticuloController() {
     }
 
@@ -49,6 +50,18 @@ public class ArticuloController implements Serializable {
         return ejbFacade;
     }
 
+    public String articuloCargarLista(){
+        return "/admin/articulo/List";
+    }
+    // no funciona, asi lo manejaba en proyectos anteriores, pero no funciona en este.
+    public void articuloCargarLista2(CargarVistaController cvc){
+        System.out.println("En Controlador ArticuloController Metodo articuloCargarLista()");
+        //CargarVistaController cvc = new CargarVistaController();
+        //System.out.println("Se Creo el objeto CargarVistaController NOOO /articulo/List");
+        System.out.println("return /admin/articulo/List");
+        cvc.CargarListaArticulos2();  
+    }
+    
     public Articulo prepareCreate() {
         selected = new Articulo();
         initializeEmbeddableKey();

@@ -9,4 +9,9 @@
             <var>bundleGeneral</var>
         </resource-bundle>
     </application>
+    <managed-bean>
+        <managed-bean-name>cargarVistaController</managed-bean-name>
+        <managed-bean-class>com.tallerelectronica.managedbean.CargarVistaController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>
