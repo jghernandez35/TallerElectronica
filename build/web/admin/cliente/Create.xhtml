@@ -11,21 +11,19 @@
         <p:dialog id="ClienteCreateDlg" widgetVar="ClienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.CreateClienteTitle}">
             <h:form id="ClienteCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
-                        <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliId}" for="cliId" />
-                        <p:inputText id="cliId" value="#{clienteController.selected.cliId}" title="#{bundleGeneral.CreateClienteTitle_cliId}" required="true" requiredMessage="#{bundleGeneral.CreateClienteRequiredMessage_cliId}"/>
+                    <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliCedula}" for="cliCedula" />
-                        <p:inputText id="cliCedula" value="#{clienteController.selected.cliCedula}" title="#{bundleGeneral.CreateClienteTitle_cliCedula}" />
+                        <p:inputText id="cliCedula" value="#{clienteController.cliente.cliCedula}" title="#{bundleGeneral.CreateClienteTitle_cliCedula}" />
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliNombres}" for="cliNombres" />
-                        <p:inputText id="cliNombres" value="#{clienteController.selected.cliNombres}" title="#{bundleGeneral.CreateClienteTitle_cliNombres}" />
+                        <p:inputText id="cliNombres" value="#{clienteController.cliente.cliNombres}" title="#{bundleGeneral.CreateClienteTitle_cliNombres}" />
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliApellidos}" for="cliApellidos" />
-                        <p:inputText id="cliApellidos" value="#{clienteController.selected.cliApellidos}" title="#{bundleGeneral.CreateClienteTitle_cliApellidos}" />
+                        <p:inputText id="cliApellidos" value="#{clienteController.cliente.cliApellidos}" title="#{bundleGeneral.CreateClienteTitle_cliApellidos}" />
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliTelefono}" for="cliTelefono" />
-                        <p:inputText id="cliTelefono" value="#{clienteController.selected.cliTelefono}" title="#{bundleGeneral.CreateClienteTitle_cliTelefono}" />
+                        <p:inputText id="cliTelefono" value="#{clienteController.cliente.cliTelefono}" title="#{bundleGeneral.CreateClienteTitle_cliTelefono}" />
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliCelular}" for="cliCelular" />
-                        <p:inputText id="cliCelular" value="#{clienteController.selected.cliCelular}" title="#{bundleGeneral.CreateClienteTitle_cliCelular}" />
+                        <p:inputText id="cliCelular" value="#{clienteController.cliente.cliCelular}" title="#{bundleGeneral.CreateClienteTitle_cliCelular}" />
                         <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliDireccion}" for="cliDireccion" />
-                        <p:inputText id="cliDireccion" value="#{clienteController.selected.cliDireccion}" title="#{bundleGeneral.CreateClienteTitle_cliDireccion}" />
+                        <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleGeneral.CreateClienteTitle_cliDireccion}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clienteController.create}" value="#{bundleGeneral.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClienteCreateDialog');"/>
                     <p:commandButton value="#{bundleGeneral.Cancel}" onclick="ClienteCreateDialog.hide()"/>

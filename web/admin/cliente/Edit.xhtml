@@ -11,21 +11,19 @@
         <p:dialog id="ClienteEditDlg" widgetVar="ClienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.EditClienteTitle}">
             <h:form id="ClienteEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
-                        <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliId}" for="cliId" />
-                        <p:inputText id="cliId" value="#{clienteController.selected.cliId}" title="#{bundleGeneral.EditClienteTitle_cliId}" required="true" requiredMessage="#{bundleGeneral.EditClienteRequiredMessage_cliId}"/>
+                    <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliCedula}" for="cliCedula" />
-                        <p:inputText id="cliCedula" value="#{clienteController.selected.cliCedula}" title="#{bundleGeneral.EditClienteTitle_cliCedula}" />
+                        <p:inputText id="cliCedula" value="#{clienteController.cliente.cliCedula}" title="#{bundleGeneral.EditClienteTitle_cliCedula}" />
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliNombres}" for="cliNombres" />
-                        <p:inputText id="cliNombres" value="#{clienteController.selected.cliNombres}" title="#{bundleGeneral.EditClienteTitle_cliNombres}" />
+                        <p:inputText id="cliNombres" value="#{clienteController.cliente.cliNombres}" title="#{bundleGeneral.EditClienteTitle_cliNombres}" />
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliApellidos}" for="cliApellidos" />
-                        <p:inputText id="cliApellidos" value="#{clienteController.selected.cliApellidos}" title="#{bundleGeneral.EditClienteTitle_cliApellidos}" />
+                        <p:inputText id="cliApellidos" value="#{clienteController.cliente.cliApellidos}" title="#{bundleGeneral.EditClienteTitle_cliApellidos}" />
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliTelefono}" for="cliTelefono" />
-                        <p:inputText id="cliTelefono" value="#{clienteController.selected.cliTelefono}" title="#{bundleGeneral.EditClienteTitle_cliTelefono}" />
+                        <p:inputText id="cliTelefono" value="#{clienteController.cliente.cliTelefono}" title="#{bundleGeneral.EditClienteTitle_cliTelefono}" />
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliCelular}" for="cliCelular" />
-                        <p:inputText id="cliCelular" value="#{clienteController.selected.cliCelular}" title="#{bundleGeneral.EditClienteTitle_cliCelular}" />
+                        <p:inputText id="cliCelular" value="#{clienteController.cliente.cliCelular}" title="#{bundleGeneral.EditClienteTitle_cliCelular}" />
                         <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliDireccion}" for="cliDireccion" />
-                        <p:inputText id="cliDireccion" value="#{clienteController.selected.cliDireccion}" title="#{bundleGeneral.EditClienteTitle_cliDireccion}" />
+                        <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleGeneral.EditClienteTitle_cliDireccion}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clienteController.update}" value="#{bundleGeneral.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClienteEditDialog');"/>
                     <p:commandButton value="#{bundleGeneral.Cancel}" onclick="ClienteEditDialog.hide()"/>

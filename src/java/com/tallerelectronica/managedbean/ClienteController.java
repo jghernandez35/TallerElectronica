@@ -1,5 +1,6 @@
 package com.tallerelectronica.managedbean;
 
+import static com.sun.javafx.logging.PulseLogger.addMessage;
 import com.tallerelectronica.entidades.Cliente;
 import com.tallerelectronica.managedbean.util.JsfUtil;
 import com.tallerelectronica.managedbean.util.JsfUtil.PersistAction;
@@ -14,6 +15,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -24,19 +26,19 @@ import javax.faces.convert.FacesConverter;
 public class ClienteController implements Serializable {
 
     @EJB
-    private com.tallerelectronica.sessionbean.ClienteFacade ejbFacade;
+    private com.tallerelectronica.sessionbean.ClienteFacade ejbFacadeCliente;
     private List<Cliente> items = null;
-    private Cliente selected;
+    private Cliente cliente;
 
     public ClienteController() {
     }
 
-    public Cliente getSelected() {
-        return selected;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setSelected(Cliente selected) {
-        this.selected = selected;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     protected void setEmbeddableKeys() {
@@ -45,50 +47,75 @@ public class ClienteController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private ClienteFacade getFacade() {
-        return ejbFacade;
+    private ClienteFacade getFacadeCliente() {
+        return ejbFacadeCliente;
     }
-
-    public Cliente prepareCreate() {
-        selected = new Cliente();
+    
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }    
+    //carga la lista de los clientes del sistema
+    public String clienteCargarLista(){
+        //cliente = new Cliente();
+        System.out.println("En clienteCargarLista()");
+        return "/admin/cliente/ListClientes";
+    }
+    //limpia el cliente para que no queden datos basura
+    public void limpiarCliente() {
+        cliente = null;
+    }
+    // prepara lo necesario para crear un cliente
+    public String prepareCreate() {
+        cliente = new Cliente();
         initializeEmbeddableKey();
-        return selected;
+        return "/admin/cliente/CreateCliente";
     }
-
-    public void create() {
+    // prepara lo necesario para editar un cliente
+    public String prepareEditarCliente(Cliente c) {
+        cliente = c;
+        initializeEmbeddableKey();
+        return "/admin/cliente/EditCliente";
+    }    
+    
+    public String create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
+        return "/admin/cliente/ListClientes";
     }
-
-    public void update() {
+    //actualiza el cliente seleccionado
+    public String update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteUpdated"));
+        return "/admin/cliente/ListClientes";
     }
 
-    public void destroy() {
+    public void destroy(Cliente c) {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteDeleted"));
         if (!JsfUtil.isValidationFailed()) {
-            selected = null; // Remove selection
+            ejbFacadeCliente.remove(c);
+            cliente = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
+            addMessage("Eliminar Cliente", "Cliente Eliminado Correctamente");
         }
     }
 
     public List<Cliente> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            items = getFacadeCliente().findAll();
         }
         return items;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
-        if (selected != null) {
+        if (cliente != null) {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    getFacadeCliente().edit(cliente);
                 } else {
-                    getFacade().remove(selected);
+                    getFacadeCliente().remove(cliente);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {
@@ -110,15 +137,15 @@ public class ClienteController implements Serializable {
     }
 
     public Cliente getCliente(java.lang.Integer id) {
-        return getFacade().find(id);
+        return getFacadeCliente().find(id);
     }
 
     public List<Cliente> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return getFacadeCliente().findAll();
     }
 
     public List<Cliente> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return getFacadeCliente().findAll();
     }
 
     @FacesConverter(forClass = Cliente.class)

@@ -3,13 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
         <div id="title">
-            <ui:insert name="title">TallerElectrónica</ui:insert>
+            <ui:insert name="title"></ui:insert>
         </div>
         
         <h:outputStylesheet name="./css/default.css"/>
@@ -18,45 +19,83 @@
     </h:head>
 
     <h:body>
+    <section id="contenedor">
+        <header>
+            <div id="top">
+                <h1>Electrónica Revelo</h1>
+                <h3>Centro de Servicio Técnico Especializado</h3>
+                <ui:insert name="top"></ui:insert>
+            </div>
+        </header>
+        <section id="menu-content">
+                <section id="menu">
+                        <ui:insert name="left"></ui:insert>
+                            <h:form>
+                                <p:growl id="growl" showDetail="true"/>    
+                                <p:menubar>
+                                    <p:menuitem value="Inicio" action="#{clienteController.clienteCargarLista()}" icon="ui-icon-home"/>
+                                    <p:submenu label="Clientes" icon="ui-icon-person">
+                                        <p:menuitem value="Lista de Cliente" action="#{clienteController.clienteCargarLista()}" />
+                                        <p:menuitem value="Nuevo Cliente" action="#{clienteController.clienteCargarLista()}" />
+                                        <p:menuitem value="Opcion1" url="#" />
+                                        <p:separator />
+                                        <p:menuitem value="Opcion2" url="#" />
+                                    </p:submenu>                                    
+                                    <p:submenu label="Articulos" icon="ui-icon-document">
+                                        <p:menuitem value="Lista Articulos" action="#{articuloController.articuloCargarLista()}" />
+                                        <p:menuitem value="Nuevo Articulos" action="#{articuloController.articuloCargarLista()}" />
+                                    </p:submenu>
 
-        <div id="top">
-            <h1>Electrónica Revelo</h1>
-            <h3>Centro de Servicio Técnico Especializado</h3>
-            <ui:insert name="top"></ui:insert>
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left"></ui:insert>
-                    <h:form>
-                    <p:growl id="growl" showDetail="true"/>    
-                    <h3 style="margin-top:0">MENU</h3>
-                    <p:menu>
-                        <p:submenu label="Articulos">
-                            <p:menuitem value="Lista de Articulos" action="#{articuloController.articuloCargarLista()}" update="growl" icon="ui-icon-disk" />
-                            <p:menuitem value="Update" actionListener="#{menuView.update}" update="growl" icon="ui-icon-arrowrefresh-1-w"/>
-                        </p:submenu>
-                        <p:submenu label="Non-Ajax">
-                            <p:menuitem value="Lista de Articulos" action="#{articuloController.articuloCargarLista()}" update="growl" ajax="false" icon="ui-icon-close"/>
-                        </p:submenu>
-                        <p:submenu label="Navigations">
-                            <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                            <p:menuitem value="Internal" icon="ui-icon-star"/>
-                        </p:submenu>
-                    </p:menu>
-                    </h:form>
-            </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content"></ui:insert>
-            </div>
-        </div>
+                                    <p:submenu label="Edit" icon="ui-icon-pencil">
+                                        <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+                                        <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+                                    </p:submenu>
+
+                                    <p:submenu label="Help" icon="ui-icon-help">
+                                        <p:menuitem value="Contents" url="#" />
+                                        <p:submenu label="Search" icon="ui-icon-search">
+                                            <p:submenu label="Text">
+                                                <p:menuitem value="Workspace" url="#" />
+                                            </p:submenu>
+                                            <p:menuitem value="File" url="#" />
+                                        </p:submenu>
+                                    </p:submenu>
+
+                                    <p:submenu label="Actions" icon="ui-icon-gear">
+                                        <p:submenu label="Ajax" icon="ui-icon-refresh">
+                                            <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="growl"/>
+                                            <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="growl"/>
+                                        </p:submenu>
+                                        <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                                            <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="growl" ajax="false"/>
+                                        </p:submenu>
+                                    </p:submenu>
+
+                                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+
+                                    <f:facet name="options">
+                                        <p:inputText style="margin-right:10px" placeholder="Buscar"/>
+                                        <p:commandButton type="button" value="Cerrar Sesión" icon="ui-icon-extlink" />
+                                    </f:facet>
+                                </p:menubar>                            
+                            </h:form>
+
+                </section>
+                <section id="content">
+                        <ui:insert name="content"></ui:insert>
+                </section>                        
+
+        </section>               
         <div id="bottom">
-            <h3>Direccion Calle 5 # 20 - 05 Barrio Jose Maria Obando Popayán (Colombia)
+            <h3>Direccion Calle 5 # 20 - 47 Barrio Jose Maria Obando Popayán (Colombia)
                 <br></br>
-                Telefonos de contacto 3141114444
+                Teléfonos Fijo: 8383089 - Celular: 315 5503862
+                <br></br>
+                Horario: Lunes a Viernes 8:00 am - 6:00 pm               
             </h3>
             <ui:insert name="bottom"></ui:insert>
         </div>
-
+    </section><!--contenedor-->
     </h:body>
 
 </html>

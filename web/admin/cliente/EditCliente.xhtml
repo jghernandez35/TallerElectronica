@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <ui:composition template="./../template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="ClienteEditForm">
+                    <p:panel header="#{bundleGeneral.EditClienteTitle}">
+                        <h:panelGroup id="display">
+                            <p:panelGrid columns="6" rendered="#{clienteController.cliente != null}">
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliCedula}" for="cliCedula" />
+                                <p:inputText id="cliCedula" value="#{clienteController.cliente.cliCedula}" title="#{bundleGeneral.EditClienteTitle_cliCedula}" />
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliNombres}" for="cliNombres" />
+                                <p:inputText id="cliNombres" value="#{clienteController.cliente.cliNombres}" title="#{bundleGeneral.EditClienteTitle_cliNombres}" />
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliApellidos}" for="cliApellidos" />
+                                <p:inputText id="cliApellidos" value="#{clienteController.cliente.cliApellidos}" title="#{bundleGeneral.EditClienteTitle_cliApellidos}" />
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliTelefono}" for="cliTelefono" />
+                                <p:inputText id="cliTelefono" value="#{clienteController.cliente.cliTelefono}" title="#{bundleGeneral.EditClienteTitle_cliTelefono}" />
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliCelular}" for="cliCelular" />
+                                <p:inputText id="cliCelular" value="#{clienteController.cliente.cliCelular}" title="#{bundleGeneral.EditClienteTitle_cliCelular}" />
+                                <p:outputLabel value="#{bundleGeneral.EditClienteLabel_cliDireccion}" for="cliDireccion" />
+                                <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleGeneral.EditClienteTitle_cliDireccion}" />
+                            </p:panelGrid>
+                            <p:commandButton action="#{clienteController.update}" value="#{bundleGeneral.Save}"/>
+                            <p:commandButton value="#{bundleGeneral.Cancel}" action="#{clienteController.clienteCargarLista()}"/>
+                        </h:panelGroup>
+                    </p:panel>
+                </h:form>           
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

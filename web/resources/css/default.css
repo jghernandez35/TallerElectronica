@@ -28,4 +28,25 @@ a:link:hover, a:visited:hover  {
   text-decoration : underline;
 }
 
-
+section#contenedor{
+    margin-right: auto;
+    margin-left: auto;
+}
+header{
+    background: #dddddd;
+    border: 55px;
+}
+section#menu-content{
+}
+section#menu-content#menu{
+    height: 100px;    
+    width: 50px;
+    margin-right: auto;
+    float: left;
+}
+section#menu-content#content{
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    float: right;
+}

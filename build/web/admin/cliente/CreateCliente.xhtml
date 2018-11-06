@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="ClienteCreateForm">
+                    <p:panel header="#{bundleGeneral.CreateClienteTitle}">
+                        <h:panelGroup id="display">
+                            <p:panelGrid columns="3" rendered="#{clienteController.cliente != null}">
+                                
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliCedula}" for="cliCedula" />
+                                <p:inputText id="cliCedula" value="#{clienteController.cliente.cliCedula}" title="#{bundleGeneral.CreateClienteTitle_cliCedula}" required="true" requiredMessage="Cedula requerida" >
+                                    <h:outputText value=""/>
+                                    <f:validator validatorId="ValidarCampoObligatorio"/>
+                                    <f:validator validatorId="ValidarCampoSoloLetrasYespacio"/>
+                                    <p:ajax event = "keyup" update="nom3" />                              
+                                </p:inputText>
+                                <p:message for="cliCedula" id="nom3" class="message" />
+                                    
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliNombres}" for="cliNombres" />
+                                <p:inputText id="cliNombres" value="#{clienteController.cliente.cliNombres}" title="#{bundleGeneral.CreateClienteTitle_cliNombres}" />
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliApellidos}" for="cliApellidos" />
+                                <p:inputText id="cliApellidos" value="#{clienteController.cliente.cliApellidos}" title="#{bundleGeneral.CreateClienteTitle_cliApellidos}" />
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliTelefono}" for="cliTelefono" />
+                                <p:inputText id="cliTelefono" value="#{clienteController.cliente.cliTelefono}" title="#{bundleGeneral.CreateClienteTitle_cliTelefono}" />
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliCelular}" for="cliCelular" />
+                                <p:inputText id="cliCelular" value="#{clienteController.cliente.cliCelular}" title="#{bundleGeneral.CreateClienteTitle_cliCelular}" />
+                                <p:outputLabel value="#{bundleGeneral.CreateClienteLabel_cliDireccion}" for="cliDireccion" />
+                                <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleGeneral.CreateClienteTitle_cliDireccion}" />
+                            </p:panelGrid>
+                            <p:commandButton action="#{clienteController.create}" value="#{bundleGeneral.Save}"/>
+                            <p:commandButton value="#{bundleGeneral.Cancel}" action="#{clienteController.clienteCargarLista()}"/>
+                        </h:panelGroup>
+                    </p:panel>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
