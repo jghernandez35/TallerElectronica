@@ -42,7 +42,7 @@
                         <p:panel header="#{bundleGeneral.ListArticuloTitle}">
                             <p:dataTable id="datalist" value="#{articuloController.items}" var="item"
                                           styleClass="table table-hover"
-                                         selectionMode="single" selection="#{articuloController.selected}"
+                                         selectionMode="single" selection="#{articuloController.articulo}"
                                          paginator="true"
                                          rowKey="#{item.artIdNumorden}"
                                          rows="10"
@@ -122,9 +122,9 @@
                                 </p:column>
                                 <f:facet name="footer">
                                     <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleGeneral.Create}" actionListener="#{articuloController.prepareCreate}" update=":ArticuloCreateForm" oncomplete="PF('ArticuloCreateDialog').show()"/>
-                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundleGeneral.View}" update=":ArticuloViewForm" oncomplete="PF('ArticuloViewDialog').show()" disabled="#{empty articuloController.selected}"/>
-                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundleGeneral.Edit}" update=":ArticuloEditForm" oncomplete="PF('ArticuloEditDialog').show()" disabled="#{empty articuloController.selected}"/>
-                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundleGeneral.Delete}" actionListener="#{articuloController.destroy}" update=":growl,datalist" disabled="#{empty articuloController.selected}"/>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundleGeneral.View}" update=":ArticuloViewForm" oncomplete="PF('ArticuloViewDialog').show()" disabled="#{empty articuloController.articulo}"/>
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundleGeneral.Edit}" update=":ArticuloEditForm" oncomplete="PF('ArticuloEditDialog').show()" disabled="#{empty articuloController.articulo}"/>
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundleGeneral.Delete}" actionListener="#{articuloController.destroy}" update=":growl,datalist" disabled="#{empty articuloController.articulo}"/>
                                 </f:facet>
                             </p:dataTable>
                         </p:panel>

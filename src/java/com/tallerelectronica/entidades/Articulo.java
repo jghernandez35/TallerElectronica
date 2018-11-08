@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Articulo.findByArtModelo", query = "SELECT a FROM Articulo a WHERE a.artModelo = :artModelo")
     , @NamedQuery(name = "Articulo.findByArtSerial", query = "SELECT a FROM Articulo a WHERE a.artSerial = :artSerial")
     , @NamedQuery(name = "Articulo.findByArtGarantia", query = "SELECT a FROM Articulo a WHERE a.artGarantia = :artGarantia")
+    , @NamedQuery(name = "Articulo.findByCliId", query = "SELECT a FROM Articulo a WHERE a.cliId.cliId = :cliId ")
     , @NamedQuery(name = "Articulo.findByArtFechaingreso", query = "SELECT a FROM Articulo a WHERE a.artFechaingreso = :artFechaingreso")})
 public class Articulo implements Serializable {
 

@@ -1,6 +1,7 @@
 package com.tallerelectronica.managedbean;
 
 import com.tallerelectronica.entidades.Articulo;
+import com.tallerelectronica.entidades.Cliente;
 import com.tallerelectronica.managedbean.util.JsfUtil;
 import com.tallerelectronica.managedbean.CargarVistaController;
 import com.tallerelectronica.managedbean.util.JsfUtil.PersistAction;
@@ -27,17 +28,19 @@ public class ArticuloController implements Serializable {
     @EJB
     private com.tallerelectronica.sessionbean.ArticuloFacade ejbFacade;
     private List<Articulo> items = null;
-    private Articulo selected;
+    private List<Articulo> items_cliente = null;
+    private Articulo articulo;
+    private Cliente cliente;
     
     public ArticuloController() {
     }
 
-    public Articulo getSelected() {
-        return selected;
+    public Articulo getArticulo() {
+        return articulo;
     }
 
-    public void setSelected(Articulo selected) {
-        this.selected = selected;
+    public void setArticulo(Articulo articulo) {
+        this.articulo = articulo;
     }
 
     protected void setEmbeddableKeys() {
@@ -48,6 +51,14 @@ public class ArticuloController implements Serializable {
 
     private ArticuloFacade getFacade() {
         return ejbFacade;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String articuloCargarLista(){
@@ -62,10 +73,15 @@ public class ArticuloController implements Serializable {
         cvc.CargarListaArticulos2();  
     }
     
+    public String prepareGestionArticulosCliente(Cliente cli){
+        cliente = cli;
+        return "/admin/cliente/ListArticulosCliente";
+    }  
+    
     public Articulo prepareCreate() {
-        selected = new Articulo();
+        articulo = new Articulo();
         initializeEmbeddableKey();
-        return selected;
+        return articulo;
     }
 
     public void create() {
@@ -82,7 +98,7 @@ public class ArticuloController implements Serializable {
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleGeneral").getString("ArticuloDeleted"));
         if (!JsfUtil.isValidationFailed()) {
-            selected = null; // Remove selection
+            articulo = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
@@ -93,15 +109,24 @@ public class ArticuloController implements Serializable {
         }
         return items;
     }
+    //internamente se ejecuta consulta para sacar los Articulos asociados a un Cliente mediante el id 
+    public List<Articulo> getItems_cliente() {
+        items_cliente=getFacade().listarArticulosCliente(cliente.getCliId());
+        return items_cliente;
+    }
+
+    public void setItems_cliente(List<Articulo> items_cliente) {
+        this.items_cliente = items_cliente;
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
-        if (selected != null) {
+        if (articulo != null) {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    getFacade().edit(articulo);
                 } else {
-                    getFacade().remove(selected);
+                    getFacade().remove(articulo);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {

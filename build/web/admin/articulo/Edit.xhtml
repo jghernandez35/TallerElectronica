@@ -11,25 +11,25 @@
         <p:dialog id="ArticuloEditDlg" widgetVar="ArticuloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleGeneral.EditArticuloTitle}">
             <h:form id="ArticuloEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{articuloController.selected != null}">
+                    <p:panelGrid columns="2" rendered="#{articuloController.articulo != null}">
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artIdNumorden}" for="artIdNumorden" />
-                        <p:inputText id="artIdNumorden" value="#{articuloController.selected.artIdNumorden}" title="#{bundleGeneral.EditArticuloTitle_artIdNumorden}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_artIdNumorden}"/>
+                        <p:inputText id="artIdNumorden" value="#{articuloController.articulo.artIdNumorden}" title="#{bundleGeneral.EditArticuloTitle_artIdNumorden}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_artIdNumorden}"/>
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artModelo}" for="artModelo" />
-                        <p:inputText id="artModelo" value="#{articuloController.selected.artModelo}" title="#{bundleGeneral.EditArticuloTitle_artModelo}" />
+                        <p:inputText id="artModelo" value="#{articuloController.articulo.artModelo}" title="#{bundleGeneral.EditArticuloTitle_artModelo}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artSerial}" for="artSerial" />
-                        <p:inputText id="artSerial" value="#{articuloController.selected.artSerial}" title="#{bundleGeneral.EditArticuloTitle_artSerial}" />
+                        <p:inputText id="artSerial" value="#{articuloController.articulo.artSerial}" title="#{bundleGeneral.EditArticuloTitle_artSerial}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artFalla}" for="artFalla" />
-                        <p:inputTextarea rows="4" cols="30" id="artFalla" value="#{articuloController.selected.artFalla}" title="#{bundleGeneral.EditArticuloTitle_artFalla}" />
+                        <p:inputTextarea rows="4" cols="30" id="artFalla" value="#{articuloController.articulo.artFalla}" title="#{bundleGeneral.EditArticuloTitle_artFalla}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artAccesorios}" for="artAccesorios" />
-                        <p:inputTextarea rows="4" cols="30" id="artAccesorios" value="#{articuloController.selected.artAccesorios}" title="#{bundleGeneral.EditArticuloTitle_artAccesorios}" />
+                        <p:inputTextarea rows="4" cols="30" id="artAccesorios" value="#{articuloController.articulo.artAccesorios}" title="#{bundleGeneral.EditArticuloTitle_artAccesorios}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artObservaciones}" for="artObservaciones" />
-                        <p:inputTextarea rows="4" cols="30" id="artObservaciones" value="#{articuloController.selected.artObservaciones}" title="#{bundleGeneral.EditArticuloTitle_artObservaciones}" />
+                        <p:inputTextarea rows="4" cols="30" id="artObservaciones" value="#{articuloController.articulo.artObservaciones}" title="#{bundleGeneral.EditArticuloTitle_artObservaciones}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artGarantia}" for="artGarantia" />
-                        <p:inputText id="artGarantia" value="#{articuloController.selected.artGarantia}" title="#{bundleGeneral.EditArticuloTitle_artGarantia}" />
+                        <p:inputText id="artGarantia" value="#{articuloController.articulo.artGarantia}" title="#{bundleGeneral.EditArticuloTitle_artGarantia}" />
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_artFechaingreso}" for="artFechaingreso" />
-                        <p:calendar id="artFechaingreso" pattern="MM/dd/yyyy" value="#{articuloController.selected.artFechaingreso}" title="#{bundleGeneral.EditArticuloTitle_artFechaingreso}"  showOn="button"/>
+                        <p:calendar id="artFechaingreso" pattern="MM/dd/yyyy" value="#{articuloController.articulo.artFechaingreso}" title="#{bundleGeneral.EditArticuloTitle_artFechaingreso}"  showOn="button"/>
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_marIdMarca}" for="marIdMarca" />
-                        <p:selectOneMenu id="marIdMarca" value="#{articuloController.selected.marIdMarca}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_marIdMarca}">
+                        <p:selectOneMenu id="marIdMarca" value="#{articuloController.articulo.marIdMarca}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_marIdMarca}">
                             <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
                             <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
                                            var="marIdMarcaItem"
@@ -37,7 +37,7 @@
                                            itemValue="#{marIdMarcaItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_tipIdTipoArticulo}" for="tipIdTipoArticulo" />
-                        <p:selectOneMenu id="tipIdTipoArticulo" value="#{articuloController.selected.tipIdTipoArticulo}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_tipIdTipoArticulo}">
+                        <p:selectOneMenu id="tipIdTipoArticulo" value="#{articuloController.articulo.tipIdTipoArticulo}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_tipIdTipoArticulo}">
                             <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
                             <f:selectItems value="#{tipoarticuloController.itemsAvailableSelectOne}"
                                            var="tipIdTipoArticuloItem"
@@ -45,7 +45,7 @@
                                            itemValue="#{tipIdTipoArticuloItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleGeneral.EditArticuloLabel_cliId}" for="cliId" />
-                        <p:selectOneMenu id="cliId" value="#{articuloController.selected.cliId}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_cliId}">
+                        <p:selectOneMenu id="cliId" value="#{articuloController.articulo.cliId}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_cliId}">
                             <f:selectItem itemLabel="#{bundleGeneral.SelectOneMessage}"/>
                             <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
                                            var="cliIdItem"

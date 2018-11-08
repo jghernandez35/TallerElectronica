@@ -28,7 +28,7 @@
                                      selectionMode="single" selection="#{clienteController.cliente}"
                                      paginator="true"
                                      rowKey="#{cliente.cliId}"
-                                     rows="20"
+                                     rows="10"
                                      rowsPerPageTemplate="10,20,30,40,50"
                                      emptyMessage="No se han encontrado resultados"
                                      widgetVar="ListDialog"                                       
@@ -100,7 +100,7 @@
                                 </p:confirmDialog>                            
                                 
                                 <p:spacer width="1" height="22" style="position: relative; bottom: -2px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
-                                <p:commandLink title="Artículos" style="margin-left: 5px;" action="#{clienteController.prepareGestionArticulosCliente(cliente)}" ajax="false">                                    
+                                <p:commandLink title="Artículos" style="margin-left: 5px;" action="#{articuloController.prepareGestionArticulosCliente(cliente)}" ajax="false">                                    
                                     <p:graphicImage  library="images" name="applications-other.png"/>
                                 </p:commandLink>  
                             

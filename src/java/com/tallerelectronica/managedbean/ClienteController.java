@@ -72,12 +72,7 @@ public class ClienteController implements Serializable {
         cliente = new Cliente();
         //initializeEmbeddableKey();
         return "/admin/cliente/CreateCliente";
-    }
-    
-    public void prepareGestionArticulosCliente(Cliente cli){
-        cliente = cli;
-        cargarformulario.cargarGestionFormatoaDocente();
-    }    
+    }  
     
     // prepara lo necesario para editar un cliente
     public String prepareEditarCliente(Cliente c) {
