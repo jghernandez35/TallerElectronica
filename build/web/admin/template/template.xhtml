@@ -34,18 +34,30 @@
                                 <p:growl id="growl" showDetail="true"/>    
                                 <p:menubar>
                                     <p:menuitem value="Inicio" action="#{clienteController.clienteCargarLista()}" icon="ui-icon-home"/>
+                                    
                                     <p:submenu label="Clientes" icon="ui-icon-person">
                                         <p:menuitem value="Lista de Cliente" action="#{clienteController.clienteCargarLista()}" />
-                                        <p:menuitem value="Nuevo Cliente" action="#{clienteController.clienteCargarLista()}" />
-                                        <p:menuitem value="Opcion1" url="#" />
                                         <p:separator />
-                                        <p:menuitem value="Opcion2" url="#" />
-                                    </p:submenu>                                    
+                                        <p:menuitem value="Crear Cliente" action="#{clienteController.prepareCreate()}" />
+                                    </p:submenu>
+                                    
                                     <p:submenu label="Articulos" icon="ui-icon-document">
                                         <p:menuitem value="Lista Articulos" action="#{articuloController.articuloCargarLista()}" />
-                                        <p:menuitem value="Nuevo Articulos" action="#{articuloController.articuloCargarLista()}" />
+                                        <p:menuitem value="Nuevo Articulos" action="#{articuloController.prepareCreate()}" />
                                     </p:submenu>
 
+                                    <p:submenu label="Técnicos" icon="ui-icon-person">
+                                        <p:menuitem value="Lista de Técnicos" action="#{tecnicoController.tecnicoCargarLista()}" />
+                                        <p:separator />
+                                        <p:menuitem value="Crear Técnico" action="#{tecnicoController.prepareCreate()}" />
+                                    </p:submenu>
+                                    
+                                    <p:submenu label="Reparación" icon="ui-icon-suitcase">
+                                        <p:menuitem value="Lista de Reparaciónes" action="#{reparacionController.reparacionCargarLista()}" />
+                                        <p:separator />
+                                        <p:menuitem value="Crear Reparación" action="#{reparacionController.prepareCreate()}" />
+                                    </p:submenu>
+                                    
                                     <p:submenu label="Edit" icon="ui-icon-pencil">
                                         <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
                                         <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />

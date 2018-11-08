@@ -63,35 +63,65 @@ public class ClienteController implements Serializable {
     }
     //limpia el cliente para que no queden datos basura
     public void limpiarCliente() {
+        System.out.println("En limpiarCliente()");
         cliente = null;
     }
     // prepara lo necesario para crear un cliente
     public String prepareCreate() {
+        System.out.println("En prepareCreate()");
         cliente = new Cliente();
-        initializeEmbeddableKey();
+        //initializeEmbeddableKey();
         return "/admin/cliente/CreateCliente";
     }
+    
+    public void prepareGestionArticulosCliente(Cliente cli){
+        cliente = cli;
+        cargarformulario.cargarGestionFormatoaDocente();
+    }    
+    
     // prepara lo necesario para editar un cliente
     public String prepareEditarCliente(Cliente c) {
+        System.out.println("En prepareEditarCliente(Cliente c)");
         cliente = c;
         initializeEmbeddableKey();
         return "/admin/cliente/EditCliente";
     }    
     
     public String create() {
+        System.out.println("En create()");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
+            //return "/admin/cliente/ListClientes";
         }
+        limpiarCliente();
         return "/admin/cliente/ListClientes";
     }
+    
+    public String cancelCrearCliente() {
+        System.out.println("En cancelCrearCliente()");
+        limpiarCliente();
+        //clienteCargarLista();
+        addMessage("Crear Cliente", "Cancelado Correctamente");
+        return "/admin/cliente/ListClientes";
+    }    
+    
     //actualiza el cliente seleccionado
     public String update() {
+        System.out.println("En update()");
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteUpdated"));
         return "/admin/cliente/ListClientes";
     }
+    
+    public String cancelUpdateCliente() {
+        System.out.println("En cancelUpdateCliente()");
+        limpiarCliente();
+        addMessage("Actualizar Cliente", "Cancelado Correctamente");
+        return "/admin/cliente/ListClientes";
+    }          
 
-    public void destroy(Cliente c) {
+    public String destroy(Cliente c) {
+        System.out.println("En destroy(Cliente c)");
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             ejbFacadeCliente.remove(c);
@@ -99,6 +129,7 @@ public class ClienteController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
             addMessage("Eliminar Cliente", "Cliente Eliminado Correctamente");
         }
+        return "/admin/cliente/ListClientes";
     }
 
     public List<Cliente> getItems() {

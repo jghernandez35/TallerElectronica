@@ -31,7 +31,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
         super(Cliente.class);
     }
     
-    public boolean buscarPorNumeroIdentificacion(String cliCedula) {
+    public boolean buscarPorNumeroIdentificacion(int cliCedula) {
         Query buscarIden = getEntityManager().createNamedQuery("Cliente.findByCliCedula");
         buscarIden.setParameter("cliCedula", cliCedula);
         List<Cliente> lista= buscarIden.getResultList();

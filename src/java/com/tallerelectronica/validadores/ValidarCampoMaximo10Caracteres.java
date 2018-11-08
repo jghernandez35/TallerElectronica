@@ -18,7 +18,7 @@ public class ValidarCampoMaximo10Caracteres implements Validator
     {
         String texto = String.valueOf(value);
         
-        if(texto.length()>20)
+        if(texto.length()>10)
         {
              FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_ERROR,"","No se permite mas de 10 caracteres.");
              throw new ValidatorException(msg);  

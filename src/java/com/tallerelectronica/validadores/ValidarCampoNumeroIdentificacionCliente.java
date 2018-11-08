@@ -24,12 +24,11 @@ public class ValidarCampoNumeroIdentificacionCliente implements Validator,Serial
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException 
     {
         String texto = String.valueOf(value);
+        int cc = Integer.parseInt(texto);
     
-      
-        
-        if(clienteEJB.buscarPorNumeroIdentificacion(texto))
+        if(clienteEJB.buscarPorNumeroIdentificacion(cc))
         {
-            FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Numero de identificacion ya esta registrado");
+            FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_ERROR,"","El numero de identificacion ya esta registrado");
             throw new ValidatorException(msg); 
         }else{
                 
