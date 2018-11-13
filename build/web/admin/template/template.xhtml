@@ -22,8 +22,7 @@
     <section id="contenedor">
         <header>
             <div id="top">
-                <h1>Electrónica Revelo</h1>
-                <h3>Centro de Servicio Técnico Especializado</h3>
+                <p:graphicImage value="#{resource['images/banner2.jpg']}" />
                 <ui:insert name="top"></ui:insert>
             </div>
         </header>
@@ -41,9 +40,9 @@
                                         <p:menuitem value="Crear Cliente" action="#{clienteController.prepareCreate()}" />
                                     </p:submenu>
                                     
-                                    <p:submenu label="Articulos" icon="ui-icon-document">
-                                        <p:menuitem value="Lista Articulos" action="#{articuloController.articuloCargarLista()}" />
-                                        <p:menuitem value="Nuevo Articulos" action="#{articuloController.prepareCreate()}" />
+                                    <p:submenu label="Artículos" icon="ui-icon-document">
+                                        <p:menuitem value="Lista Artículos" action="#{articuloController.articuloCargarLista()}" />
+                                        <p:menuitem value="Nuevo Artículos" action="#{articuloController.prepareCreate()}" />
                                     </p:submenu>
 
                                     <p:submenu label="Técnicos" icon="ui-icon-person">

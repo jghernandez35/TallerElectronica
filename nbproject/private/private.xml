@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/AcerF5w10/Documents/NetBeansProjects/TallerElectronicaWeb/web/admin/cliente/ListClientes.xhtml</file>
+            <file>file:/C:/Users/AcerF5w10/Documents/NetBeansProjects/TallerElectronicaWeb/src/java/com/tallerelectronica/managedbean/ArticuloController.java</file>
+            <file>file:/C:/Users/AcerF5w10/Documents/NetBeansProjects/TallerElectronicaWeb/web/admin/articulo/CreateArticuloCliente.xhtml</file>
+            <file>file:/C:/Users/AcerF5w10/Documents/NetBeansProjects/TallerElectronicaWeb/web/admin/articulo/ListArticulosCliente.xhtml</file>
+            <file>file:/C:/Users/AcerF5w10/Documents/NetBeansProjects/TallerElectronicaWeb/src/java/com/tallerelectronica/managedbean/ClienteController.java</file>
         </group>
     </open-files>
 </project-private>

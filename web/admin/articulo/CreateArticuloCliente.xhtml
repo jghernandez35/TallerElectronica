@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="content">
+                <p:panel>
+                    <h:form id="ArticuloCreateForm">
+                        <p:panel header="#{bundleGeneral.CreateArticuloTitle} Asociado a Cliente">
+                            <h:panelGroup id="display2">
+                                <p:panelGrid columns="8" rendered="#{articuloController.articulo != null}">
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artFechaingreso}" for="artFechaingreso" />
+                                    <h:outputText id="artFechaingreso" value="#{articuloController.currentDate2}"/>
+                                    <h:outputText value="#{bundleGeneral.ViewClienteLabel_cliCedula}"/>
+                                    <h:outputText value="#{articuloController.cliente.cliCedula}" title="#{bundleGeneral.ViewClienteTitle_cliCedula}"/>
+                                    <h:outputText value="#{bundleGeneral.ViewClienteLabel_cliNombres}"/>
+                                    <h:outputText value="#{articuloController.cliente.cliNombres}" title="#{bundleGeneral.ViewClienteTitle_cliNombres}"/>
+                                    <h:outputText value="#{bundleGeneral.ViewClienteLabel_cliApellidos}"/>
+                                    <h:outputText value="#{articuloController.cliente.cliApellidos}" title="#{bundleGeneral.ViewClienteTitle_cliApellidos}"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </p:panel>
+                        <p:panel header="#{bundleGeneral.CreateArticuloTitle} Asociado a Cliente">
+                            <h:panelGroup id="display">
+                                <p:panelGrid columns="3" rendered="#{articuloController.articulo != null}">
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_tipIdTipoArticulo}" for="tipIdTipoArticulo" />
+                                    <p:selectOneMenu id="tipIdTipoArticulo" value="#{articuloController.articulo.tipIdTipoArticulo}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_tipIdTipoArticulo}"
+                                                      panelStyle="width:180px" effect="fade" style="width:270px" filter="true" filterMatchMode="startsWith">
+                                        <f:selectItems value="#{tipoarticuloController.itemsAvailableSelectOne}"
+                                                       var="tipIdTipoArticuloItem"
+                                                       itemLabel="#{tipIdTipoArticuloItem.tipNombre}"
+                                                       itemValue="#{tipIdTipoArticuloItem}"/>
+                                    </p:selectOneMenu>   
+                                    <h:outputText value=""/>
+                                    
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_marIdMarca}" for="marIdMarca" />
+                                    <p:selectOneMenu id="marIdMarca" value="#{articuloController.articulo.marIdMarca}" required="true" requiredMessage="#{bundleGeneral.EditArticuloRequiredMessage_marIdMarca}"
+                                                      panelStyle="width:180px" effect="fade" style="width:270px" filter="true" filterMatchMode="startsWith">
+                                        <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
+                                                       var="marIdMarcaItem"
+                                                       itemLabel="#{marIdMarcaItem.marNombre}"
+                                                       itemValue="#{marIdMarcaItem}"/>
+                                    </p:selectOneMenu>
+                                    <h:outputText value=""/>
+                                    
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artModelo}" for="artModelo" />
+                                    <p:inputText id="artModelo" value="#{articuloController.articulo.artModelo}" title="#{bundleGeneral.CreateArticuloTitle_artModelo}" style="width:265px" required="false" requiredMessage="Modelo requerido" >
+                                        <h:outputText value=""/>
+                                        <f:validator validatorId="ValidarCampoSoloLetrasNumerosGuionBajoGuionPuntosEspacioYSlash"/>
+                                        <p:ajax event = "keyup" update="mensaje1" />                              
+                                    </p:inputText>
+                                    <p:message for="artModelo" id="mensaje1" class="message" />
+                                
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artSerial}" for="artSerial" />
+                                    <p:inputText id="artSerial" value="#{articuloController.articulo.artSerial}" title="#{bundleGeneral.CreateArticuloTitle_artSerial}" style="width:265px" required="false" requiredMessage="Serial requerido" >
+                                        <h:outputText value=""/>
+                                        <f:validator validatorId="ValidarCampoSoloLetrasNumerosGuionBajoGuionPuntosEspacioYSlash"/>
+                                        <p:ajax event = "keyup" update="mensaje2" />                              
+                                    </p:inputText>
+                                    <p:message for="artSerial" id="mensaje2" class="message" />
+                                    
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artFalla}" for="artFalla" />
+                                    <p:inputTextarea rows="4" cols="30" id="artFalla" value="#{articuloController.articulo.artFalla}" title="#{bundleGeneral.CreateArticuloTitle_artFalla}" required="false" requiredMessage="Falla requerida" counter="mensajeaux" maxlength="700" counterTemplate="{0} caracteres restantes.">
+                                        <h:outputText value=""/>
+                                        <f:validator validatorId="ValidarCampoSoloLetrasNumerosGuionBajoGuionPuntosEspacio"/>
+                                        <f:validator validatorId="ValidarCampoMaximo700Caracteres"/>
+                                        <p:ajax event = "keyup" update="mensaje3" />                              
+                                    </p:inputTextarea>
+                                    <p:message for="artFalla" id="mensaje3" class="message" />
+                                    <h:outputText value=""/>
+                                    <h:outputText id="mensajeaux" />
+                                    <h:outputText value=""/>
+
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artAccesorios}" for="artAccesorios" />
+                                    <p:inputTextarea rows="4" cols="30" id="artAccesorios" value="#{articuloController.articulo.artAccesorios}" title="#{bundleGeneral.CreateArticuloTitle_artAccesorios}" required="false" requiredMessage="Accesorio(s) requerido(s)" counter="mensajeaux1" maxlength="350" counterTemplate="{0} caracteres restantes.">
+                                        <h:outputText value=""/>
+                                        <f:validator validatorId="ValidarCampoSoloLetrasNumerosComa"/>
+                                        <f:validator validatorId="ValidarCampoMaximo350Caracteres"/>
+                                        <p:ajax event = "keyup" update="mensaje4" />                              
+                                    </p:inputTextarea>
+                                    <p:message for="artAccesorios" id="mensaje4" class="message" />
+                                    <h:outputText value=""/>
+                                    <h:outputText id="mensajeaux1" />
+                                    <h:outputText value=""/>                                    
+                                    
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artObservaciones}" for="artObservaciones" />
+                                    <p:inputTextarea rows="4" cols="30" id="artObservaciones" value="#{articuloController.articulo.artObservaciones}" title="#{bundleGeneral.CreateArticuloTitle_artObservaciones}" required="false" requiredMessage="Observacion(es) requerida(as)" counter="mensajeaux2" maxlength="700" counterTemplate="{0} caracteres restantes.">
+                                        <h:outputText value=""/>
+                                        <f:validator validatorId="ValidarCampoSoloLetrasNumerosGuionBajoGuionPuntosEspacio"/>
+                                        <f:validator validatorId="ValidarCampoMaximo700Caracteres"/>
+                                        <p:ajax event = "keyup" update="mensaje5" />                              
+                                    </p:inputTextarea>
+                                    <p:message for="artObservaciones" id="mensaje5" class="message" />
+                                    <h:outputText value=""/>
+                                    <h:outputText id="mensajeaux2" />
+                                    <h:outputText value=""/>                                    
+                                    
+                                    <p:outputLabel value="#{bundleGeneral.CreateArticuloLabel_artGarantia}" for="artGarantia" />
+                                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                        <p:selectOneRadio id="artGarantia" value="#{articuloController.articulo.artGarantia}" required="true" requiredMessage="Garantia requerida" >
+                                            <f:selectItem itemLabel="sin garantia" itemValue="sin garantia" />
+                                            <f:selectItem itemLabel="con garantia" itemValue="con garantia" />
+                                            <p:ajax event = "keyup" update="mensaje6" /> 
+                                        </p:selectOneRadio>
+                                    </h:panelGrid>
+                                    <p:message for="artGarantia" id="mensaje6" class="message" />
+                                
+                                    
+
+                                    
+                                </p:panelGrid>
+                                <p:panel>
+                                    <p:commandButton action="#{articuloController.create}" value="#{bundleGeneral.Save}" ajax="false" icon="document-save-5"/>
+                                    <h:outputLabel>   (*) Campos Obligatorios</h:outputLabel>
+                                </p:panel>                                    
+                            </h:panelGroup>
+                        </p:panel>    
+                    </h:form>
+                </p:panel>
+                <p:panel>
+                    <p:panel>              
+                        <h:form>
+                            <p:commandButton action="#{articuloController.cancelCrearArticuloCliente()}" value="#{bundleGeneral.Cancel}" ajax="false"/>                    
+                        </h:form>
+                    </p:panel>
+                </p:panel>                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

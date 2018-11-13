@@ -87,7 +87,6 @@ public class ClienteController implements Serializable {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
-            //return "/admin/cliente/ListClientes";
         }
         limpiarCliente();
         return "/admin/cliente/ListClientes";
@@ -96,7 +95,6 @@ public class ClienteController implements Serializable {
     public String cancelCrearCliente() {
         System.out.println("En cancelCrearCliente()");
         limpiarCliente();
-        //clienteCargarLista();
         addMessage("Crear Cliente", "Cancelado Correctamente");
         return "/admin/cliente/ListClientes";
     }    

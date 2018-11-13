@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"      >
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -12,16 +12,18 @@
             <ui:define name="content">
                 <h:form id="ClienteListForm">
                   <h:panelGrid  columns="1">
-                      <p:commandButton 
-                          icon="ui-icon-plusthick" 
-                          style="width:150px;height:25px;    
-                          border: 1px solid #000000; 
-                          color: white; 
-                          background: #0040FF;"  
-                          value="Crear Cliente" 
-                          action="#{clienteController.prepareCreate()}" 
-                          oncomplete="#{clienteController.limpiarCliente()}" 
-                          ajax="false"/>                    
+                      <p:panel>
+                        <p:commandButton 
+                            icon="ui-icon-plusthick" 
+                            style="width:150px;height:25px;    
+                            border: 1px solid #000000; 
+                            color: white; 
+                            background: #DB0808;"  
+                            value="Crear Cliente" 
+                            action="#{clienteController.prepareCreate()}" 
+                            oncomplete="#{clienteController.limpiarCliente()}" 
+                            ajax="false"/> 
+                      </p:panel>   
                   </h:panelGrid>                         
                     <p:panel header="#{bundleGeneral.ListClienteTitle}">
                         <p:dataTable id="datalist" value="#{clienteController.items}" var="cliente"
@@ -81,7 +83,7 @@
                                 <h:outputText value="#{cliente.cliDireccion}"/>
                             </p:column>
                             
-                            <p:column headerText="Acciones" style="width: 220px">
+                            <p:column headerText="Acciones" style="width: 140px">
                                 
                                 <p:commandLink title="Editar" style="margin-left: 5px;" action="#{clienteController.prepareEditarCliente(cliente)}" ajax="false">                                    
                                     <p:graphicImage  library="images" name="ico-edit2.png"/>
@@ -101,7 +103,7 @@
                                 
                                 <p:spacer width="1" height="22" style="position: relative; bottom: -2px;background-color: #A8A8A8; margin-left: 10px;margin-right: 10px" />
                                 <p:commandLink title="Artículos" style="margin-left: 5px;" action="#{articuloController.prepareGestionArticulosCliente(cliente)}" ajax="false">                                    
-                                    <p:graphicImage  library="images" name="applications-other.png"/>
+                                    <p:graphicImage  library="images" name="articulo-articulo.png"/>
                                 </p:commandLink>  
                             
                             </p:column>                            
