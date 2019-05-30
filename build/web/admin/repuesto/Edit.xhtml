@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RepuestoEditDlg" widgetVar="RepuestoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditRepuestoTitle}">
+            <h:form id="RepuestoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{repuestoController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuId}" for="repuId" />
+                        <p:inputText id="repuId" value="#{repuestoController.selected.repuId}" title="#{bundleadmin.EditRepuestoTitle_repuId}" required="true" requiredMessage="#{bundleadmin.EditRepuestoRequiredMessage_repuId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuNumparte}" for="repuNumparte" />
+                        <p:inputText id="repuNumparte" value="#{repuestoController.selected.repuNumparte}" title="#{bundleadmin.EditRepuestoTitle_repuNumparte}" />
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuCantidad}" for="repuCantidad" />
+                        <p:inputText id="repuCantidad" value="#{repuestoController.selected.repuCantidad}" title="#{bundleadmin.EditRepuestoTitle_repuCantidad}" />
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuDescripcion}" for="repuDescripcion" />
+                        <p:inputText id="repuDescripcion" value="#{repuestoController.selected.repuDescripcion}" title="#{bundleadmin.EditRepuestoTitle_repuDescripcion}" />
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuPrecio}" for="repuPrecio" />
+                        <p:inputText id="repuPrecio" value="#{repuestoController.selected.repuPrecio}" title="#{bundleadmin.EditRepuestoTitle_repuPrecio}" />
+                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_tiporepuId}" for="tiporepuId" />
+                        <p:selectOneMenu id="tiporepuId" value="#{repuestoController.selected.tiporepuId}" required="true" requiredMessage="#{bundleadmin.EditRepuestoRequiredMessage_tiporepuId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{tiporepuestoController.itemsAvailableSelectOne}"
+                                           var="tiporepuIdItem"
+                                           itemValue="#{tiporepuIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{repuestoController.update}" value="#{bundleadmin.Save}" update="display,:RepuestoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RepuestoEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="RepuestoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

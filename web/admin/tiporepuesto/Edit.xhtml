@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TiporepuestoEditDlg" widgetVar="TiporepuestoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditTiporepuestoTitle}">
+            <h:form id="TiporepuestoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tiporepuestoController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.EditTiporepuestoLabel_tiporepuId}" for="tiporepuId" />
+                        <p:inputText id="tiporepuId" value="#{tiporepuestoController.selected.tiporepuId}" title="#{bundleadmin.EditTiporepuestoTitle_tiporepuId}" required="true" requiredMessage="#{bundleadmin.EditTiporepuestoRequiredMessage_tiporepuId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditTiporepuestoLabel_tiporepuNombre}" for="tiporepuNombre" />
+                        <p:inputText id="tiporepuNombre" value="#{tiporepuestoController.selected.tiporepuNombre}" title="#{bundleadmin.EditTiporepuestoTitle_tiporepuNombre}" />
+                        <p:outputLabel value="#{bundleadmin.EditTiporepuestoLabel_tiporepuEstado}" for="tiporepuEstado" />
+                        <p:inputText id="tiporepuEstado" value="#{tiporepuestoController.selected.tiporepuEstado}" title="#{bundleadmin.EditTiporepuestoTitle_tiporepuEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tiporepuestoController.update}" value="#{bundleadmin.Save}" update="display,:TiporepuestoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TiporepuestoEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="TiporepuestoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

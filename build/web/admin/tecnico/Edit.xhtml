@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TecnicoEditDlg" widgetVar="TecnicoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditTecnicoTitle}">
+            <h:form id="TecnicoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tecnicoController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecId}" for="tecId" />
+                        <p:inputText id="tecId" value="#{tecnicoController.selected.tecId}" title="#{bundleadmin.EditTecnicoTitle_tecId}" required="true" requiredMessage="#{bundleadmin.EditTecnicoRequiredMessage_tecId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecDocumento}" for="tecDocumento" />
+                        <p:inputText id="tecDocumento" value="#{tecnicoController.selected.tecDocumento}" title="#{bundleadmin.EditTecnicoTitle_tecDocumento}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecNombres}" for="tecNombres" />
+                        <p:inputText id="tecNombres" value="#{tecnicoController.selected.tecNombres}" title="#{bundleadmin.EditTecnicoTitle_tecNombres}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecApellidos}" for="tecApellidos" />
+                        <p:inputText id="tecApellidos" value="#{tecnicoController.selected.tecApellidos}" title="#{bundleadmin.EditTecnicoTitle_tecApellidos}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecTelefono1}" for="tecTelefono1" />
+                        <p:inputText id="tecTelefono1" value="#{tecnicoController.selected.tecTelefono1}" title="#{bundleadmin.EditTecnicoTitle_tecTelefono1}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecTelefono2}" for="tecTelefono2" />
+                        <p:inputText id="tecTelefono2" value="#{tecnicoController.selected.tecTelefono2}" title="#{bundleadmin.EditTecnicoTitle_tecTelefono2}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecDireccion}" for="tecDireccion" />
+                        <p:inputText id="tecDireccion" value="#{tecnicoController.selected.tecDireccion}" title="#{bundleadmin.EditTecnicoTitle_tecDireccion}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecLogin}" for="tecLogin" />
+                        <p:inputText id="tecLogin" value="#{tecnicoController.selected.tecLogin}" title="#{bundleadmin.EditTecnicoTitle_tecLogin}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecContrasena}" for="tecContrasena" />
+                        <p:inputText id="tecContrasena" value="#{tecnicoController.selected.tecContrasena}" title="#{bundleadmin.EditTecnicoTitle_tecContrasena}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecEstado}" for="tecEstado" />
+                        <p:inputText id="tecEstado" value="#{tecnicoController.selected.tecEstado}" title="#{bundleadmin.EditTecnicoTitle_tecEstado}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecEmail}" for="tecEmail" />
+                        <p:inputTextarea rows="4" cols="30" id="tecEmail" value="#{tecnicoController.selected.tecEmail}" title="#{bundleadmin.EditTecnicoTitle_tecEmail}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecImagen}" for="tecImagen" />
+                        <p:inputTextarea rows="4" cols="30" id="tecImagen" value="#{tecnicoController.selected.tecImagen}" title="#{bundleadmin.EditTecnicoTitle_tecImagen}" />
+                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tipdocId}" for="tipdocId" />
+                        <p:selectOneMenu id="tipdocId" value="#{tecnicoController.selected.tipdocId}" required="true" requiredMessage="#{bundleadmin.EditTecnicoRequiredMessage_tipdocId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
+                                           var="tipdocIdItem"
+                                           itemValue="#{tipdocIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tecnicoController.update}" value="#{bundleadmin.Save}" update="display,:TecnicoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TecnicoEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="TecnicoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

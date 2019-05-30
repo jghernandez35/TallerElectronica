@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">Titulo por Defecto</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+        <p:growl id="growl" life="3000" />
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="165" header="#{bundleadmin.AppName}">
+            <h:graphicImage library="images" name="banner2.jpg" width="100%" height="100%" />
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="180" header="Menu" collapsible="true">
+                <h:form id="menuForm">
+                    <p:growl id="messages" showDetail="false"/>
+                    <p:menu style="padding: 10px">
+                            <p:submenu label="Clientes">
+                                <p:menuitem value="Lista Clientes" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>
+                            <p:submenu label="Articulos">
+                                <p:menuitem value="Lista Artículos" action="#{articuloController.articuloCargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
+                            </p:submenu>
+                            <p:submenu label="Reparaciones">
+                                <p:menuitem value="Lista Reparaciones" action="#{articuloController.articuloCargarLista()}" icon="pi pi-home"/>
+                            </p:submenu>
+                    </p:menu>                    
+                </h:form>                
+            </p:layoutUnit>            
+            
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+            
+            <p:layoutUnit position="south" size="60" style="text-align: center">
+                <ui:insert name="footer"/>
+                    <h3>Direccion Calle 5 # 20 - 47 Barrio Jose Maria Obando Popayán (Colombia) -- Teléfonos Fijo: 8383089 - Celular: 315 5503862 -- Horario: Lunes a Viernes 8:00 am - 6:00 pm</h3>
+            </p:layoutUnit>
+
+
+        </p:layout>
+
+    </h:body>
+
+</html>

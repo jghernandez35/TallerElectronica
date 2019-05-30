@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstadoservicioEditDlg" widgetVar="EstadoservicioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditEstadoservicioTitle}">
+            <h:form id="EstadoservicioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estadoservicioController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estId}" for="estId" />
+                        <p:inputText id="estId" value="#{estadoservicioController.selected.estId}" title="#{bundleadmin.EditEstadoservicioTitle_estId}" required="true" requiredMessage="#{bundleadmin.EditEstadoservicioRequiredMessage_estId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estNombre}" for="estNombre" />
+                        <p:inputText id="estNombre" value="#{estadoservicioController.selected.estNombre}" title="#{bundleadmin.EditEstadoservicioTitle_estNombre}" />
+                        <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estEstado}" for="estEstado" />
+                        <p:inputText id="estEstado" value="#{estadoservicioController.selected.estEstado}" title="#{bundleadmin.EditEstadoservicioTitle_estEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estadoservicioController.update}" value="#{bundleadmin.Save}" update="display,:EstadoservicioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoservicioEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="EstadoservicioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

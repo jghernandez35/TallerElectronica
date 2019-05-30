@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoarticuloCreateDlg" widgetVar="TipoarticuloCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.CreateTipoarticuloTitle}">
+            <h:form id="TipoarticuloCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoarticuloController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartId}" for="tipartId" />
+                        <p:inputText id="tipartId" value="#{tipoarticuloController.selected.tipartId}" title="#{bundleadmin.CreateTipoarticuloTitle_tipartId}" required="true" requiredMessage="#{bundleadmin.CreateTipoarticuloRequiredMessage_tipartId}"/>
+                        <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartNombre}" for="tipartNombre" />
+                        <p:inputText id="tipartNombre" value="#{tipoarticuloController.selected.tipartNombre}" title="#{bundleadmin.CreateTipoarticuloTitle_tipartNombre}" />
+                        <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartEstado}" for="tipartEstado" />
+                        <p:inputText id="tipartEstado" value="#{tipoarticuloController.selected.tipartEstado}" title="#{bundleadmin.CreateTipoarticuloTitle_tipartEstado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoarticuloController.create}" value="#{bundleadmin.Save}" update="display,:TipoarticuloListForm:datalist,:growl" oncomplete="handleSubmit(args,'TipoarticuloCreateDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="TipoarticuloCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TecnicoViewDlg" widgetVar="TecnicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.ViewTecnicoTitle}">
+            <h:form id="TecnicoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tecnicoController.selected != null}">
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecId}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecId}" title="#{bundleadmin.ViewTecnicoTitle_tecId}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecDocumento}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecDocumento}" title="#{bundleadmin.ViewTecnicoTitle_tecDocumento}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecNombres}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecNombres}" title="#{bundleadmin.ViewTecnicoTitle_tecNombres}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecApellidos}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecApellidos}" title="#{bundleadmin.ViewTecnicoTitle_tecApellidos}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecTelefono1}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecTelefono1}" title="#{bundleadmin.ViewTecnicoTitle_tecTelefono1}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecTelefono2}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecTelefono2}" title="#{bundleadmin.ViewTecnicoTitle_tecTelefono2}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecDireccion}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecDireccion}" title="#{bundleadmin.ViewTecnicoTitle_tecDireccion}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecLogin}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecLogin}" title="#{bundleadmin.ViewTecnicoTitle_tecLogin}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecContrasena}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecContrasena}" title="#{bundleadmin.ViewTecnicoTitle_tecContrasena}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecEstado}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecEstado}" title="#{bundleadmin.ViewTecnicoTitle_tecEstado}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecEmail}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecEmail}" title="#{bundleadmin.ViewTecnicoTitle_tecEmail}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecImagen}"/>
+                        <h:outputText value="#{tecnicoController.selected.tecImagen}" title="#{bundleadmin.ViewTecnicoTitle_tecImagen}"/>
+                        <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tipdocId}"/>
+                        <h:outputText value="#{tecnicoController.selected.tipdocId}" title="#{bundleadmin.ViewTecnicoTitle_tipdocId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleadmin.Close}" onclick="TecnicoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

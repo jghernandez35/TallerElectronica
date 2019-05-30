@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ImagenEditDlg" widgetVar="ImagenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditImagenTitle}">
+            <h:form id="ImagenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{imagenController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.EditImagenLabel_imgId}" for="imgId" />
+                        <p:inputText id="imgId" value="#{imagenController.selected.imgId}" title="#{bundleadmin.EditImagenTitle_imgId}" required="true" requiredMessage="#{bundleadmin.EditImagenRequiredMessage_imgId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditImagenLabel_imgImagen}" for="imgImagen" />
+                        <p:inputTextarea rows="4" cols="30" id="imgImagen" value="#{imagenController.selected.imgImagen}" title="#{bundleadmin.EditImagenTitle_imgImagen}" />
+                        <p:outputLabel value="#{bundleadmin.EditImagenLabel_imgTipo}" for="imgTipo" />
+                        <p:inputText id="imgTipo" value="#{imagenController.selected.imgTipo}" title="#{bundleadmin.EditImagenTitle_imgTipo}" />
+                        <p:outputLabel value="#{bundleadmin.EditImagenLabel_repaIdNumorden}" for="repaIdNumorden" />
+                        <p:selectOneMenu id="repaIdNumorden" value="#{imagenController.selected.repaIdNumorden}" required="true" requiredMessage="#{bundleadmin.EditImagenRequiredMessage_repaIdNumorden}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{reparacionController.itemsAvailableSelectOne}"
+                                           var="repaIdNumordenItem"
+                                           itemValue="#{repaIdNumordenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{imagenController.update}" value="#{bundleadmin.Save}" update="display,:ImagenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ImagenEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="ImagenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReparacionViewDlg" widgetVar="ReparacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.ViewReparacionTitle}">
+            <h:form id="ReparacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reparacionController.selected != null}">
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaIdNumorden}"/>
+                        <h:outputText value="#{reparacionController.selected.repaIdNumorden}" title="#{bundleadmin.ViewReparacionTitle_repaIdNumorden}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaFechaingreso}"/>
+                        <h:outputText value="#{reparacionController.selected.repaFechaingreso}" title="#{bundleadmin.ViewReparacionTitle_repaFechaingreso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaFechasalida}"/>
+                        <h:outputText value="#{reparacionController.selected.repaFechasalida}" title="#{bundleadmin.ViewReparacionTitle_repaFechasalida}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaReportetecnico}"/>
+                        <h:outputText value="#{reparacionController.selected.repaReportetecnico}" title="#{bundleadmin.ViewReparacionTitle_repaReportetecnico}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaPreciomanoobra}"/>
+                        <h:outputText value="#{reparacionController.selected.repaPreciomanoobra}" title="#{bundleadmin.ViewReparacionTitle_repaPreciomanoobra}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaFalla}"/>
+                        <h:outputText value="#{reparacionController.selected.repaFalla}" title="#{bundleadmin.ViewReparacionTitle_repaFalla}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_artId}"/>
+                        <h:outputText value="#{reparacionController.selected.artId}" title="#{bundleadmin.ViewReparacionTitle_artId}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_estId}"/>
+                        <h:outputText value="#{reparacionController.selected.estId}" title="#{bundleadmin.ViewReparacionTitle_estId}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_tecId}"/>
+                        <h:outputText value="#{reparacionController.selected.tecId}" title="#{bundleadmin.ViewReparacionTitle_tecId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleadmin.Close}" onclick="ReparacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

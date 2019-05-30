@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GarantiaCreateDlg" widgetVar="GarantiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.CreateGarantiaTitle}">
+            <h:form id="GarantiaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{garantiaController.selected != null}">
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_garId}" for="garId" />
+                        <p:inputText id="garId" value="#{garantiaController.selected.garId}" title="#{bundleadmin.CreateGarantiaTitle_garId}" required="true" requiredMessage="#{bundleadmin.CreateGarantiaRequiredMessage_garId}"/>
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_garNumfacturaalmacen}" for="garNumfacturaalmacen" />
+                        <p:inputText id="garNumfacturaalmacen" value="#{garantiaController.selected.garNumfacturaalmacen}" title="#{bundleadmin.CreateGarantiaTitle_garNumfacturaalmacen}" />
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_garFechafacturaalmacen}" for="garFechafacturaalmacen" />
+                        <p:calendar id="garFechafacturaalmacen" pattern="MM/dd/yyyy" value="#{garantiaController.selected.garFechafacturaalmacen}" title="#{bundleadmin.EditGarantiaTitle_garFechafacturaalmacen}"  showOn="button"/>
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_garNumordenmarca}" for="garNumordenmarca" />
+                        <p:inputText id="garNumordenmarca" value="#{garantiaController.selected.garNumordenmarca}" title="#{bundleadmin.CreateGarantiaTitle_garNumordenmarca}" />
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_almId}" for="almId" />
+                        <p:selectOneMenu id="almId" value="#{garantiaController.selected.almId}" required="true" requiredMessage="#{bundleadmin.EditGarantiaRequiredMessage_almId}">
+                            <f:selectItems value="#{almacenController.itemsAvailableSelectOne}"
+                                           var="almIdItem"
+                                           itemValue="#{almIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleadmin.CreateGarantiaLabel_repaIdNumorden}" for="repaIdNumorden" />
+                        <p:selectOneMenu id="repaIdNumorden" value="#{garantiaController.selected.repaIdNumorden}" required="true" requiredMessage="#{bundleadmin.EditGarantiaRequiredMessage_repaIdNumorden}">
+                            <f:selectItems value="#{reparacionController.itemsAvailableSelectOne}"
+                                           var="repaIdNumordenItem"
+                                           itemValue="#{repaIdNumordenItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{garantiaController.create}" value="#{bundleadmin.Save}" update="display,:GarantiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'GarantiaCreateDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="GarantiaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticuloEditDlg" widgetVar="ArticuloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.EditArticuloTitle}">
+            <h:form id="ArticuloEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articuloController.articulo != null}">
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_artId}" for="artId" />
+                        <p:inputText id="artId" value="#{articuloController.articulo.artId}" title="#{bundleadmin.EditArticuloTitle_artId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_artId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_artModelo}" for="artModelo" />
+                        <p:inputText id="artModelo" value="#{articuloController.articulo.artModelo}" title="#{bundleadmin.EditArticuloTitle_artModelo}" />
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_artSerial}" for="artSerial" />
+                        <p:inputText id="artSerial" value="#{articuloController.articulo.artSerial}" title="#{bundleadmin.EditArticuloTitle_artSerial}" />
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_artAccesorios}" for="artAccesorios" />
+                        <p:inputTextarea rows="4" cols="30" id="artAccesorios" value="#{articuloController.articulo.artAccesorios}" title="#{bundleadmin.EditArticuloTitle_artAccesorios}" />
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_artObservaciones}" for="artObservaciones" />
+                        <p:inputTextarea rows="4" cols="30" id="artObservaciones" value="#{articuloController.articulo.artObservaciones}" title="#{bundleadmin.EditArticuloTitle_artObservaciones}" />
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_marId}" for="marId" />
+                        <p:selectOneMenu id="marId" value="#{articuloController.articulo.marId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_marId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
+                                           var="marIdItem"
+                                           itemValue="#{marIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_tipartId}" for="tipartId" />
+                        <p:selectOneMenu id="tipartId" value="#{articuloController.articulo.tipartId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_tipartId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoarticuloController.itemsAvailableSelectOne}"
+                                           var="tipartIdItem"
+                                           itemValue="#{tipartIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleadmin.EditArticuloLabel_cliId}" for="cliId" />
+                        <p:selectOneMenu id="cliId" value="#{articuloController.articulo.cliId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_cliId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="cliIdItem"
+                                           itemValue="#{cliIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{articuloController.update}" value="#{bundleadmin.Save}" update="display,:ArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ArticuloEditDialog');"/>
+                    <p:commandButton value="#{bundleadmin.Cancel}" onclick="ArticuloEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

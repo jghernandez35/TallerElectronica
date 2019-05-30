@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticuloViewDlg" widgetVar="ArticuloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.ViewArticuloTitle}">
+            <h:form id="ArticuloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articuloController.articulo != null}">
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artId}"/>
+                        <h:outputText value="#{articuloController.articulo.artId}" title="#{bundleadmin.ViewArticuloTitle_artId}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artModelo}"/>
+                        <h:outputText value="#{articuloController.articulo.artModelo}" title="#{bundleadmin.ViewArticuloTitle_artModelo}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artSerial}"/>
+                        <h:outputText value="#{articuloController.articulo.artSerial}" title="#{bundleadmin.ViewArticuloTitle_artSerial}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artAccesorios}"/>
+                        <h:outputText value="#{articuloController.articulo.artAccesorios}" title="#{bundleadmin.ViewArticuloTitle_artAccesorios}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artObservaciones}"/>
+                        <h:outputText value="#{articuloController.articulo.artObservaciones}" title="#{bundleadmin.ViewArticuloTitle_artObservaciones}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_marId}"/>
+                        <h:outputText value="#{articuloController.articulo.marId}" title="#{bundleadmin.ViewArticuloTitle_marId}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_tipartId}"/>
+                        <h:outputText value="#{articuloController.articulo.tipartId}" title="#{bundleadmin.ViewArticuloTitle_tipartId}"/>
+                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_cliId}"/>
+                        <h:outputText value="#{articuloController.articulo.cliId}" title="#{bundleadmin.ViewArticuloTitle_cliId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleadmin.Close}" onclick="ArticuloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

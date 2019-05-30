@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GarantiaViewDlg" widgetVar="GarantiaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.ViewGarantiaTitle}">
+            <h:form id="GarantiaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{garantiaController.selected != null}">
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garId}"/>
+                        <h:outputText value="#{garantiaController.selected.garId}" title="#{bundleadmin.ViewGarantiaTitle_garId}"/>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garNumfacturaalmacen}"/>
+                        <h:outputText value="#{garantiaController.selected.garNumfacturaalmacen}" title="#{bundleadmin.ViewGarantiaTitle_garNumfacturaalmacen}"/>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garFechafacturaalmacen}"/>
+                        <h:outputText value="#{garantiaController.selected.garFechafacturaalmacen}" title="#{bundleadmin.ViewGarantiaTitle_garFechafacturaalmacen}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garNumordenmarca}"/>
+                        <h:outputText value="#{garantiaController.selected.garNumordenmarca}" title="#{bundleadmin.ViewGarantiaTitle_garNumordenmarca}"/>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_almId}"/>
+                        <h:outputText value="#{garantiaController.selected.almId}" title="#{bundleadmin.ViewGarantiaTitle_almId}"/>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_repaIdNumorden}"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden}" title="#{bundleadmin.ViewGarantiaTitle_repaIdNumorden}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleadmin.Close}" onclick="GarantiaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
