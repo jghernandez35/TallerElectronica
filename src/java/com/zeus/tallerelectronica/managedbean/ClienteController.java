@@ -80,7 +80,13 @@ public class ClienteController implements Serializable {
         cliente = c;
         initializeEmbeddableKey();
         return "/admin/cliente/EditCliente";
-    } 
+    }
+    
+    public Cliente prepareCreate() {
+        cliente = new Cliente();
+        initializeEmbeddableKey();
+        return cliente;
+    }
     
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundleadmin").getString("ClienteCreated"));

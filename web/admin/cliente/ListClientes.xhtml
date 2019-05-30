@@ -35,6 +35,12 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_tipdocId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipdocId.tipdocNombre}"/>
+                        </p:column>                        
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliDocumento}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliDocumento}"/>
@@ -53,6 +59,18 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliDireccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cliDireccion}"/>
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_depId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.depId.depNombre}"/>
+                        </p:column>                        
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono1}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliTelefono1}"/>
@@ -62,12 +80,6 @@
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono2}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliTelefono2}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliDireccion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliDireccion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -98,18 +110,6 @@
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoalttelefono}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliContactoalttelefono}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_tipdocId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tipdocId}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_depId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.depId}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{clienteController.prepareCreate}" update=":ClienteCreateForm" oncomplete="PF('ClienteCreateDialog').show()"/>

@@ -14,20 +14,36 @@
                     <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliId}" for="cliId" />
                         <p:inputText id="cliId" value="#{clienteController.cliente.cliId}" title="#{bundleadmin.EditClienteTitle_cliId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_cliId}"/>
+                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_tipdocId}" for="tipdocId" />
+                        <p:selectOneMenu id="tipdocId" value="#{clienteController.cliente.tipdocId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_tipdocId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
+                                           var="tipdocIdItem"
+                                           itemValue="#{tipdocIdItem}"
+                                           itemLabel="#{tipdocIdItem.tipdocNombre}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliDocumento}" for="cliDocumento" />
                         <p:inputText id="cliDocumento" value="#{clienteController.cliente.cliDocumento}" title="#{bundleadmin.EditClienteTitle_cliDocumento}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliNombres}" for="cliNombres" />
                         <p:inputText id="cliNombres" value="#{clienteController.cliente.cliNombres}" title="#{bundleadmin.EditClienteTitle_cliNombres}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliApellidos}" for="cliApellidos" />
                         <p:inputText id="cliApellidos" value="#{clienteController.cliente.cliApellidos}" title="#{bundleadmin.EditClienteTitle_cliApellidos}" />
+                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliDireccion}" for="cliDireccion" />
+                        <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleadmin.EditClienteTitle_cliDireccion}" />
+                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_depId}" for="depId" />
+                        <p:selectOneMenu id="depId" value="#{clienteController.cliente.depId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_depId}">
+                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="depIdItem"
+                                           itemValue="#{depIdItem}"
+                                           itemLabel="#{depIdItem.depNombre}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliTelefono1}" for="cliTelefono1" />
                         <p:inputText id="cliTelefono1" value="#{clienteController.cliente.cliTelefono1}" title="#{bundleadmin.EditClienteTitle_cliTelefono1}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliTelefono2}" for="cliTelefono2" />
                         <p:inputText id="cliTelefono2" value="#{clienteController.cliente.cliTelefono2}" title="#{bundleadmin.EditClienteTitle_cliTelefono2}" />
-                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliDireccion}" for="cliDireccion" />
-                        <p:inputText id="cliDireccion" value="#{clienteController.cliente.cliDireccion}" title="#{bundleadmin.EditClienteTitle_cliDireccion}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliEmail}" for="cliEmail" />
-                        <p:inputTextarea rows="4" cols="30" id="cliEmail" value="#{clienteController.cliente.cliEmail}" title="#{bundleadmin.EditClienteTitle_cliEmail}" />
+                        <p:inputTextarea rows="1" cols="30" id="cliEmail" value="#{clienteController.cliente.cliEmail}" title="#{bundleadmin.EditClienteTitle_cliEmail}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliLogin}" for="cliLogin" />
                         <p:inputText id="cliLogin" value="#{clienteController.cliente.cliLogin}" title="#{bundleadmin.EditClienteTitle_cliLogin}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliContrasena}" for="cliContrasena" />
@@ -36,20 +52,6 @@
                         <p:inputText id="cliContactoaltnombre" value="#{clienteController.cliente.cliContactoaltnombre}" title="#{bundleadmin.EditClienteTitle_cliContactoaltnombre}" />
                         <p:outputLabel value="#{bundleadmin.EditClienteLabel_cliContactoalttelefono}" for="cliContactoalttelefono" />
                         <p:inputText id="cliContactoalttelefono" value="#{clienteController.cliente.cliContactoalttelefono}" title="#{bundleadmin.EditClienteTitle_cliContactoalttelefono}" />
-                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_tipdocId}" for="tipdocId" />
-                        <p:selectOneMenu id="tipdocId" value="#{clienteController.cliente.tipdocId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_tipdocId}">
-                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
-                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
-                                           var="tipdocIdItem"
-                                           itemValue="#{tipdocIdItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundleadmin.EditClienteLabel_depId}" for="depId" />
-                        <p:selectOneMenu id="depId" value="#{clienteController.cliente.depId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_depId}">
-                            <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
-                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
-                                           var="depIdItem"
-                                           itemValue="#{depIdItem}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clienteController.update}" value="#{bundleadmin.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClienteEditDialog');"/>
                     <p:commandButton value="#{bundleadmin.Cancel}" onclick="ClienteEditDialog.hide()"/>

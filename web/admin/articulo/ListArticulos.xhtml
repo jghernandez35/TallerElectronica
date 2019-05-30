@@ -35,6 +35,18 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListArticuloTitle_tipartId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipartId.tipartNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListArticuloTitle_marId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.marId.marNombre}"/>
+                        </p:column>                        
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListArticuloTitle_artModelo}"/>
                             </f:facet>
                             <h:outputText value="#{item.artModelo}"/>
@@ -59,21 +71,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListArticuloTitle_marId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.marId}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListArticuloTitle_tipartId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tipartId}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListArticuloTitle_cliId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cliId}"/>
+                            <h:outputText value="#{item.cliId.cliNombres} #{item.cliId.cliApellidos}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{articuloController.prepareCreate}" update=":ArticuloCreateForm" oncomplete="PF('ArticuloCreateDialog').show()"/>

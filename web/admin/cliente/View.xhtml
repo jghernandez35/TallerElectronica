@@ -14,18 +14,22 @@
                     <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliId}"/>
                         <h:outputText value="#{clienteController.cliente.cliId}" title="#{bundleadmin.ViewClienteTitle_cliId}"/>
+                        <h:outputText value="#{bundleadmin.ViewClienteLabel_tipdocId}"/>
+                        <h:outputText value="#{clienteController.cliente.tipdocId.tipdocNombre}" title="#{bundleadmin.ViewClienteTitle_tipdocId}"/>                        
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliDocumento}"/>
                         <h:outputText value="#{clienteController.cliente.cliDocumento}" title="#{bundleadmin.ViewClienteTitle_cliDocumento}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliNombres}"/>
                         <h:outputText value="#{clienteController.cliente.cliNombres}" title="#{bundleadmin.ViewClienteTitle_cliNombres}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliApellidos}"/>
                         <h:outputText value="#{clienteController.cliente.cliApellidos}" title="#{bundleadmin.ViewClienteTitle_cliApellidos}"/>
+                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliDireccion}"/>
+                        <h:outputText value="#{clienteController.cliente.cliDireccion}" title="#{bundleadmin.ViewClienteTitle_cliDireccion}"/>                        
+                        <h:outputText value="#{bundleadmin.ViewClienteLabel_depId}"/>
+                        <h:outputText value="#{clienteController.cliente.depId.depNombre}" title="#{bundleadmin.ViewClienteTitle_depId}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliTelefono1}"/>
                         <h:outputText value="#{clienteController.cliente.cliTelefono1}" title="#{bundleadmin.ViewClienteTitle_cliTelefono1}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliTelefono2}"/>
                         <h:outputText value="#{clienteController.cliente.cliTelefono2}" title="#{bundleadmin.ViewClienteTitle_cliTelefono2}"/>
-                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliDireccion}"/>
-                        <h:outputText value="#{clienteController.cliente.cliDireccion}" title="#{bundleadmin.ViewClienteTitle_cliDireccion}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliEmail}"/>
                         <h:outputText value="#{clienteController.cliente.cliEmail}" title="#{bundleadmin.ViewClienteTitle_cliEmail}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliLogin}"/>
@@ -36,10 +40,6 @@
                         <h:outputText value="#{clienteController.cliente.cliContactoaltnombre}" title="#{bundleadmin.ViewClienteTitle_cliContactoaltnombre}"/>
                         <h:outputText value="#{bundleadmin.ViewClienteLabel_cliContactoalttelefono}"/>
                         <h:outputText value="#{clienteController.cliente.cliContactoalttelefono}" title="#{bundleadmin.ViewClienteTitle_cliContactoalttelefono}"/>
-                        <h:outputText value="#{bundleadmin.ViewClienteLabel_tipdocId}"/>
-                        <h:outputText value="#{clienteController.cliente.tipdocId}" title="#{bundleadmin.ViewClienteTitle_tipdocId}"/>
-                        <h:outputText value="#{bundleadmin.ViewClienteLabel_depId}"/>
-                        <h:outputText value="#{clienteController.cliente.depId}" title="#{bundleadmin.ViewClienteTitle_depId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundleadmin.Close}" onclick="ClienteViewDialog.hide()"/>
                 </h:panelGroup>
