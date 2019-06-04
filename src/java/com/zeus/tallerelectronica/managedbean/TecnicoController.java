@@ -48,7 +48,11 @@ public class TecnicoController implements Serializable {
     private TecnicoFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/tecnico/List";
+    }
+    
     public Tecnico prepareCreate() {
         selected = new Tecnico();
         initializeEmbeddableKey();

@@ -12,8 +12,6 @@
             <h:form id="TipodocumentoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipodocumentoController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditTipodocumentoLabel_tipdocId}" for="tipdocId" />
-                        <p:inputText id="tipdocId" value="#{tipodocumentoController.selected.tipdocId}" title="#{bundleadmin.EditTipodocumentoTitle_tipdocId}" required="true" requiredMessage="#{bundleadmin.EditTipodocumentoRequiredMessage_tipdocId}"/>
                         <p:outputLabel value="#{bundleadmin.EditTipodocumentoLabel_tipdocNombre}" for="tipdocNombre" />
                         <p:inputText id="tipdocNombre" value="#{tipodocumentoController.selected.tipdocNombre}" title="#{bundleadmin.EditTipodocumentoTitle_tipdocNombre}" />
                         <p:outputLabel value="#{bundleadmin.EditTipodocumentoLabel_tipdocEstado}" for="tipdocEstado" />

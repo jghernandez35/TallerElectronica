@@ -12,8 +12,6 @@
             <h:form id="RepuestoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{repuestoController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuId}" for="repuId" />
-                        <p:inputText id="repuId" value="#{repuestoController.selected.repuId}" title="#{bundleadmin.EditRepuestoTitle_repuId}" required="true" requiredMessage="#{bundleadmin.EditRepuestoRequiredMessage_repuId}"/>
                         <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuNumparte}" for="repuNumparte" />
                         <p:inputText id="repuNumparte" value="#{repuestoController.selected.repuNumparte}" title="#{bundleadmin.EditRepuestoTitle_repuNumparte}" />
                         <p:outputLabel value="#{bundleadmin.EditRepuestoLabel_repuCantidad}" for="repuCantidad" />
@@ -27,7 +25,8 @@
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{tiporepuestoController.itemsAvailableSelectOne}"
                                            var="tiporepuIdItem"
-                                           itemValue="#{tiporepuIdItem}"/>
+                                           itemValue="#{tiporepuIdItem}"
+                                           itemLabel="#{tiporepuIdItem.tiporepuNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{repuestoController.update}" value="#{bundleadmin.Save}" update="display,:RepuestoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RepuestoEditDialog');"/>

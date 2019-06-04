@@ -48,7 +48,11 @@ public class MarcaController implements Serializable {
     private MarcaFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/marca/List";
+    }
+    
     public Marca prepareCreate() {
         selected = new Marca();
         initializeEmbeddableKey();

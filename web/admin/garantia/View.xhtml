@@ -14,19 +14,38 @@
                     <p:panelGrid columns="2" rendered="#{garantiaController.selected != null}">
                         <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garId}"/>
                         <h:outputText value="#{garantiaController.selected.garId}" title="#{bundleadmin.ViewGarantiaTitle_garId}"/>
+                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_almId}"/>
+                        <h:outputText value="#{garantiaController.selected.almId.almNombre}" title="#{bundleadmin.ViewGarantiaTitle_almId}"/>
                         <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garNumfacturaalmacen}"/>
                         <h:outputText value="#{garantiaController.selected.garNumfacturaalmacen}" title="#{bundleadmin.ViewGarantiaTitle_garNumfacturaalmacen}"/>
                         <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garFechafacturaalmacen}"/>
                         <h:outputText value="#{garantiaController.selected.garFechafacturaalmacen}" title="#{bundleadmin.ViewGarantiaTitle_garFechafacturaalmacen}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
+                        <h:outputText value="Marca"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.marId.marNombre}" title="Marca"/>                        
                         <h:outputText value="#{bundleadmin.ViewGarantiaLabel_garNumordenmarca}"/>
                         <h:outputText value="#{garantiaController.selected.garNumordenmarca}" title="#{bundleadmin.ViewGarantiaTitle_garNumordenmarca}"/>
-                        <h:outputText value="#{bundleadmin.ViewGarantiaLabel_almId}"/>
-                        <h:outputText value="#{garantiaController.selected.almId}" title="#{bundleadmin.ViewGarantiaTitle_almId}"/>
+
                         <h:outputText value="#{bundleadmin.ViewGarantiaLabel_repaIdNumorden}"/>
                         <h:outputText value="#{garantiaController.selected.repaIdNumorden}" title="#{bundleadmin.ViewGarantiaTitle_repaIdNumorden}"/>
                     </p:panelGrid>
+                </h:panelGroup>    
+                <h:panelGroup id="display2">
+                    <p:panelGrid columns="2" rendered="#{garantiaController.selected != null}">
+                        <h:outputText value="Información del Cliente"/>
+                        <h:outputText value="" title=""/>
+                        <h:outputText value="Nombre(s)"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.cliId.cliNombres}" title=""/>
+                        <h:outputText value="Apallido(s)"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.cliId.cliApellidos}" title=""/>
+                        <h:outputText value="Telefono1"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.cliId.cliTelefono1}" title=""/>
+                        <h:outputText value="Telefono2"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.cliId.cliTelefono2}" title=""/>                        
+                        <h:outputText value="Dirección"/>
+                        <h:outputText value="#{garantiaController.selected.repaIdNumorden.artId.cliId.cliDireccion}" title=""/>                        
+                    </p:panelGrid>                    
                     <p:commandButton value="#{bundleadmin.Close}" onclick="GarantiaViewDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

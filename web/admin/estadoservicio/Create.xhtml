@@ -12,8 +12,6 @@
             <h:form id="EstadoservicioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoservicioController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateEstadoservicioLabel_estId}" for="estId" />
-                        <p:inputText id="estId" value="#{estadoservicioController.selected.estId}" title="#{bundleadmin.CreateEstadoservicioTitle_estId}" required="true" requiredMessage="#{bundleadmin.CreateEstadoservicioRequiredMessage_estId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateEstadoservicioLabel_estNombre}" for="estNombre" />
                         <p:inputText id="estNombre" value="#{estadoservicioController.selected.estNombre}" title="#{bundleadmin.CreateEstadoservicioTitle_estNombre}" />
                         <p:outputLabel value="#{bundleadmin.CreateEstadoservicioLabel_estEstado}" for="estEstado" />

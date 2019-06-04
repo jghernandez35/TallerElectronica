@@ -12,8 +12,6 @@
             <h:form id="TiporepuestoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tiporepuestoController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateTiporepuestoLabel_tiporepuId}" for="tiporepuId" />
-                        <p:inputText id="tiporepuId" value="#{tiporepuestoController.selected.tiporepuId}" title="#{bundleadmin.CreateTiporepuestoTitle_tiporepuId}" required="true" requiredMessage="#{bundleadmin.CreateTiporepuestoRequiredMessage_tiporepuId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateTiporepuestoLabel_tiporepuNombre}" for="tiporepuNombre" />
                         <p:inputText id="tiporepuNombre" value="#{tiporepuestoController.selected.tiporepuNombre}" title="#{bundleadmin.CreateTiporepuestoTitle_tiporepuNombre}" />
                         <p:outputLabel value="#{bundleadmin.CreateTiporepuestoLabel_tiporepuEstado}" for="tiporepuEstado" />

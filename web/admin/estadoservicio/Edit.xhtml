@@ -12,8 +12,6 @@
             <h:form id="EstadoservicioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoservicioController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estId}" for="estId" />
-                        <p:inputText id="estId" value="#{estadoservicioController.selected.estId}" title="#{bundleadmin.EditEstadoservicioTitle_estId}" required="true" requiredMessage="#{bundleadmin.EditEstadoservicioRequiredMessage_estId}"/>
                         <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estNombre}" for="estNombre" />
                         <p:inputText id="estNombre" value="#{estadoservicioController.selected.estNombre}" title="#{bundleadmin.EditEstadoservicioTitle_estNombre}" />
                         <p:outputLabel value="#{bundleadmin.EditEstadoservicioLabel_estEstado}" for="estEstado" />

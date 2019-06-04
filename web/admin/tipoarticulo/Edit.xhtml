@@ -12,8 +12,6 @@
             <h:form id="TipoarticuloEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoarticuloController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditTipoarticuloLabel_tipartId}" for="tipartId" />
-                        <p:inputText id="tipartId" value="#{tipoarticuloController.selected.tipartId}" title="#{bundleadmin.EditTipoarticuloTitle_tipartId}" required="true" requiredMessage="#{bundleadmin.EditTipoarticuloRequiredMessage_tipartId}"/>
                         <p:outputLabel value="#{bundleadmin.EditTipoarticuloLabel_tipartNombre}" for="tipartNombre" />
                         <p:inputText id="tipartNombre" value="#{tipoarticuloController.selected.tipartNombre}" title="#{bundleadmin.EditTipoarticuloTitle_tipartNombre}" />
                         <p:outputLabel value="#{bundleadmin.EditTipoarticuloLabel_tipartEstado}" for="tipartEstado" />

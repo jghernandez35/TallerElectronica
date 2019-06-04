@@ -48,7 +48,11 @@ public class EstadoservicioController implements Serializable {
     private EstadoservicioFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/estadoservicio/List";
+    }
+    
     public Estadoservicio prepareCreate() {
         selected = new Estadoservicio();
         initializeEmbeddableKey();

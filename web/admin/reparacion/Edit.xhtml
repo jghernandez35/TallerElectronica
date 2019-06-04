@@ -12,12 +12,10 @@
             <h:form id="ReparacionEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{reparacionController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditReparacionLabel_repaIdNumorden}" for="repaIdNumorden" />
-                        <p:inputText id="repaIdNumorden" value="#{reparacionController.selected.repaIdNumorden}" title="#{bundleadmin.EditReparacionTitle_repaIdNumorden}" required="true" requiredMessage="#{bundleadmin.EditReparacionRequiredMessage_repaIdNumorden}"/>
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_repaFechaingreso}" for="repaFechaingreso" />
-                        <p:calendar id="repaFechaingreso" pattern="MM/dd/yyyy" value="#{reparacionController.selected.repaFechaingreso}" title="#{bundleadmin.EditReparacionTitle_repaFechaingreso}"  showOn="button"/>
+                        <p:calendar id="repaFechaingreso" pattern="dd/MM/yyyy" value="#{reparacionController.selected.repaFechaingreso}" title="#{bundleadmin.EditReparacionTitle_repaFechaingreso}"  showOn="button"/>
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_repaFechasalida}" for="repaFechasalida" />
-                        <p:calendar id="repaFechasalida" pattern="MM/dd/yyyy" value="#{reparacionController.selected.repaFechasalida}" title="#{bundleadmin.EditReparacionTitle_repaFechasalida}"  showOn="button"/>
+                        <p:calendar id="repaFechasalida" pattern="dd/MM/yyyy" value="#{reparacionController.selected.repaFechasalida}" title="#{bundleadmin.EditReparacionTitle_repaFechasalida}"  showOn="button"/>
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_repaReportetecnico}" for="repaReportetecnico" />
                         <p:inputText id="repaReportetecnico" value="#{reparacionController.selected.repaReportetecnico}" title="#{bundleadmin.EditReparacionTitle_repaReportetecnico}" />
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_repaPreciomanoobra}" for="repaPreciomanoobra" />
@@ -29,21 +27,24 @@
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{articuloController.itemsAvailableSelectOne}"
                                            var="artIdItem"
-                                           itemValue="#{artIdItem}"/>
+                                           itemValue="#{artIdItem}"
+                                           itemLabel="#{artIdItem.tipartId.tipartNombre}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_estId}" for="estId" />
                         <p:selectOneMenu id="estId" value="#{reparacionController.selected.estId}" required="true" requiredMessage="#{bundleadmin.EditReparacionRequiredMessage_estId}">
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{estadoservicioController.itemsAvailableSelectOne}"
                                            var="estIdItem"
-                                           itemValue="#{estIdItem}"/>
+                                           itemValue="#{estIdItem}"
+                                           itemLabel="#{estIdItem.estNombre}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.EditReparacionLabel_tecId}" for="tecId" />
                         <p:selectOneMenu id="tecId" value="#{reparacionController.selected.tecId}" required="true" requiredMessage="#{bundleadmin.EditReparacionRequiredMessage_tecId}">
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{tecnicoController.itemsAvailableSelectOne}"
                                            var="tecIdItem"
-                                           itemValue="#{tecIdItem}"/>
+                                           itemValue="#{tecIdItem}"
+                                           itemLabel="#{tecIdItem.tecNombres} #{tecIdItem.tecApellidos}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reparacionController.update}" value="#{bundleadmin.Save}" update="display,:ReparacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReparacionEditDialog');"/>

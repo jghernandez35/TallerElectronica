@@ -48,7 +48,11 @@ public class TipoarticuloController implements Serializable {
     private TipoarticuloFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/tipoarticulo/List";
+    }
+    
     public Tipoarticulo prepareCreate() {
         selected = new Tipoarticulo();
         initializeEmbeddableKey();

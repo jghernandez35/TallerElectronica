@@ -48,7 +48,10 @@ public class GarantiaController implements Serializable {
     private GarantiaFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/garantia/List";
+    }
     public Garantia prepareCreate() {
         selected = new Garantia();
         initializeEmbeddableKey();

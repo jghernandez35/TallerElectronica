@@ -48,7 +48,11 @@ public class ReparacionController implements Serializable {
     private ReparacionFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/reparacion/List";
+    }
+    
     public Reparacion prepareCreate() {
         selected = new Reparacion();
         initializeEmbeddableKey();

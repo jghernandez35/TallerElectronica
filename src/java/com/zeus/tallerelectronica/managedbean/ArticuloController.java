@@ -121,8 +121,8 @@ public class ArticuloController implements Serializable {
         //cliente = null;
     }
     //carga la lista de articulos
-    public String articuloCargarLista(){
-        return "/admin/articulo/ListArticulos";
+    public String cargarLista(){
+        return "/admin/articulo/List";
     }
     
     public String prepareVerArticuloCliente_(Articulo a){

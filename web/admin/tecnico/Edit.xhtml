@@ -12,8 +12,6 @@
             <h:form id="TecnicoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tecnicoController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecId}" for="tecId" />
-                        <p:inputText id="tecId" value="#{tecnicoController.selected.tecId}" title="#{bundleadmin.EditTecnicoTitle_tecId}" required="true" requiredMessage="#{bundleadmin.EditTecnicoRequiredMessage_tecId}"/>
                         <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecDocumento}" for="tecDocumento" />
                         <p:inputText id="tecDocumento" value="#{tecnicoController.selected.tecDocumento}" title="#{bundleadmin.EditTecnicoTitle_tecDocumento}" />
                         <p:outputLabel value="#{bundleadmin.EditTecnicoLabel_tecNombres}" for="tecNombres" />
@@ -41,7 +39,8 @@
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
                                            var="tipdocIdItem"
-                                           itemValue="#{tipdocIdItem}"/>
+                                           itemValue="#{tipdocIdItem}"
+                                           itemLabel="#{tipdocIdItem.tipdocNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tecnicoController.update}" value="#{bundleadmin.Save}" update="display,:TecnicoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TecnicoEditDialog');"/>

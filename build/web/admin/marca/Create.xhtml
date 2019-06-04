@@ -12,8 +12,6 @@
             <h:form id="MarcaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{marcaController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateMarcaLabel_marId}" for="marId" />
-                        <p:inputText id="marId" value="#{marcaController.selected.marId}" title="#{bundleadmin.CreateMarcaTitle_marId}" required="true" requiredMessage="#{bundleadmin.CreateMarcaRequiredMessage_marId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateMarcaLabel_marNombre}" for="marNombre" />
                         <p:inputText id="marNombre" value="#{marcaController.selected.marNombre}" title="#{bundleadmin.CreateMarcaTitle_marNombre}" />
                         <p:outputLabel value="#{bundleadmin.CreateMarcaLabel_marEstado}" for="marEstado" />

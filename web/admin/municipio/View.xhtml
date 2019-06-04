@@ -17,7 +17,7 @@
                         <h:outputText value="#{bundleadmin.ViewMunicipioLabel_munNombre}"/>
                         <h:outputText value="#{municipioController.selected.munNombre}" title="#{bundleadmin.ViewMunicipioTitle_munNombre}"/>
                         <h:outputText value="#{bundleadmin.ViewMunicipioLabel_depId}"/>
-                        <h:outputText value="#{municipioController.selected.depId}" title="#{bundleadmin.ViewMunicipioTitle_depId}"/>
+                        <h:outputText value="#{municipioController.selected.depId.depNombre}" title="#{bundleadmin.ViewMunicipioTitle_depId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundleadmin.Close}" onclick="MunicipioViewDialog.hide()"/>
                 </h:panelGroup>

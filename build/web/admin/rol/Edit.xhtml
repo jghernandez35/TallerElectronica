@@ -12,8 +12,6 @@
             <h:form id="RolEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditRolLabel_rolId}" for="rolId" />
-                        <p:inputText id="rolId" value="#{rolController.selected.rolId}" title="#{bundleadmin.EditRolTitle_rolId}" required="true" requiredMessage="#{bundleadmin.EditRolRequiredMessage_rolId}"/>
                         <p:outputLabel value="#{bundleadmin.EditRolLabel_rolNombre}" for="rolNombre" />
                         <p:inputText id="rolNombre" value="#{rolController.selected.rolNombre}" title="#{bundleadmin.EditRolTitle_rolNombre}" />
                     </p:panelGrid>

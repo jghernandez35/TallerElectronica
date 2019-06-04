@@ -48,7 +48,11 @@ public class TipodocumentoController implements Serializable {
     private TipodocumentoFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/tipodocumento/List";
+    }
+    
     public Tipodocumento prepareCreate() {
         selected = new Tipodocumento();
         initializeEmbeddableKey();

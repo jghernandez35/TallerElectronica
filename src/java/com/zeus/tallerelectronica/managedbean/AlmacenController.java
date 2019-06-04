@@ -49,9 +49,7 @@ public class AlmacenController implements Serializable {
         return ejbFacade;
     }
     //carga la lista de los almaceness del sistema
-    public String almacenCargarLista(){
-        //cliente = new Cliente();
-        System.out.println("En almacenCargarLista()");
+    public String cargarLista(){
         return "/admin/almacen/List";
     }
     

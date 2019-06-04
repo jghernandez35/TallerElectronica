@@ -12,8 +12,6 @@
             <h:form id="MarcaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{marcaController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditMarcaLabel_marId}" for="marId" />
-                        <p:inputText id="marId" value="#{marcaController.selected.marId}" title="#{bundleadmin.EditMarcaTitle_marId}" required="true" requiredMessage="#{bundleadmin.EditMarcaRequiredMessage_marId}"/>
                         <p:outputLabel value="#{bundleadmin.EditMarcaLabel_marNombre}" for="marNombre" />
                         <p:inputText id="marNombre" value="#{marcaController.selected.marNombre}" title="#{bundleadmin.EditMarcaTitle_marNombre}" />
                         <p:outputLabel value="#{bundleadmin.EditMarcaLabel_marEstado}" for="marEstado" />

@@ -48,7 +48,11 @@ public class RolController implements Serializable {
     private RolFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/rol/List";
+    }
+    
     public Rol prepareCreate() {
         selected = new Rol();
         initializeEmbeddableKey();

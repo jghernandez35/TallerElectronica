@@ -37,7 +37,7 @@
                         <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tecImagen}"/>
                         <h:outputText value="#{tecnicoController.selected.tecImagen}" title="#{bundleadmin.ViewTecnicoTitle_tecImagen}"/>
                         <h:outputText value="#{bundleadmin.ViewTecnicoLabel_tipdocId}"/>
-                        <h:outputText value="#{tecnicoController.selected.tipdocId}" title="#{bundleadmin.ViewTecnicoTitle_tipdocId}"/>
+                        <h:outputText value="#{tecnicoController.selected.tipdocId.tipdocNombre}" title="#{bundleadmin.ViewTecnicoTitle_tipdocId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundleadmin.Close}" onclick="TecnicoViewDialog.hide()"/>
                 </h:panelGroup>

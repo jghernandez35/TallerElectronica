@@ -12,8 +12,6 @@
             <h:form id="TecnicoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tecnicoController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateTecnicoLabel_tecId}" for="tecId" />
-                        <p:inputText id="tecId" value="#{tecnicoController.selected.tecId}" title="#{bundleadmin.CreateTecnicoTitle_tecId}" required="true" requiredMessage="#{bundleadmin.CreateTecnicoRequiredMessage_tecId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateTecnicoLabel_tecDocumento}" for="tecDocumento" />
                         <p:inputText id="tecDocumento" value="#{tecnicoController.selected.tecDocumento}" title="#{bundleadmin.CreateTecnicoTitle_tecDocumento}" />
                         <p:outputLabel value="#{bundleadmin.CreateTecnicoLabel_tecNombres}" for="tecNombres" />
@@ -40,7 +38,8 @@
                         <p:selectOneMenu id="tipdocId" value="#{tecnicoController.selected.tipdocId}" required="true" requiredMessage="#{bundleadmin.EditTecnicoRequiredMessage_tipdocId}">
                             <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
                                            var="tipdocIdItem"
-                                           itemValue="#{tipdocIdItem}"/>
+                                           itemValue="#{tipdocIdItem}"
+                                           itemLabel="#{tipdocIdItem.tipdocNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tecnicoController.create}" value="#{bundleadmin.Save}" update="display,:TecnicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'TecnicoCreateDialog');"/>

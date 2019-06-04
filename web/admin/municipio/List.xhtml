@@ -43,7 +43,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListMunicipioTitle_depId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.depId}"/>
+                            <h:outputText value="#{item.depId.depNombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{municipioController.prepareCreate}" update=":MunicipioCreateForm" oncomplete="PF('MunicipioCreateDialog').show()"/>

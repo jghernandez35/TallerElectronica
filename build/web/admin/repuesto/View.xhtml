@@ -23,7 +23,7 @@
                         <h:outputText value="#{bundleadmin.ViewRepuestoLabel_repuPrecio}"/>
                         <h:outputText value="#{repuestoController.selected.repuPrecio}" title="#{bundleadmin.ViewRepuestoTitle_repuPrecio}"/>
                         <h:outputText value="#{bundleadmin.ViewRepuestoLabel_tiporepuId}"/>
-                        <h:outputText value="#{repuestoController.selected.tiporepuId}" title="#{bundleadmin.ViewRepuestoTitle_tiporepuId}"/>
+                        <h:outputText value="#{repuestoController.selected.tiporepuId.tiporepuNombre}" title="#{bundleadmin.ViewRepuestoTitle_tiporepuId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundleadmin.Close}" onclick="RepuestoViewDialog.hide()"/>
                 </h:panelGroup>

@@ -12,8 +12,6 @@
             <h:form id="MunicipioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{municipioController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.EditMunicipioLabel_munId}" for="munId" />
-                        <p:inputText id="munId" value="#{municipioController.selected.munId}" title="#{bundleadmin.EditMunicipioTitle_munId}" required="true" requiredMessage="#{bundleadmin.EditMunicipioRequiredMessage_munId}"/>
                         <p:outputLabel value="#{bundleadmin.EditMunicipioLabel_munNombre}" for="munNombre" />
                         <p:inputText id="munNombre" value="#{municipioController.selected.munNombre}" title="#{bundleadmin.EditMunicipioTitle_munNombre}" />
                         <p:outputLabel value="#{bundleadmin.EditMunicipioLabel_depId}" for="depId" />
@@ -21,7 +19,8 @@
                             <f:selectItem itemLabel="#{bundleadmin.SelectOneMessage}"/>
                             <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
                                            var="depIdItem"
-                                           itemValue="#{depIdItem}"/>
+                                           itemValue="#{depIdItem}"
+                                           itemLabel="#{depIdItem.depNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{municipioController.update}" value="#{bundleadmin.Save}" update="display,:MunicipioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MunicipioEditDialog');"/>

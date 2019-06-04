@@ -32,7 +32,13 @@
                                 <h:outputText value="#{bundleadmin.ListGarantiaTitle_garId}"/>
                             </f:facet>
                             <h:outputText value="#{item.garId}"/>
-                        </p:column>
+                        </p:column>                          
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListGarantiaTitle_almId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.almId.almNombre}"/>
+                        </p:column>                        
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListGarantiaTitle_garNumfacturaalmacen}"/>
@@ -44,9 +50,15 @@
                                 <h:outputText value="#{bundleadmin.ListGarantiaTitle_garFechafacturaalmacen}"/>
                             </f:facet>
                             <h:outputText value="#{item.garFechafacturaalmacen}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Marca"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaIdNumorden.artId.marId.marNombre}"/>
+                        </p:column>                         
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListGarantiaTitle_garNumordenmarca}"/>
@@ -55,16 +67,16 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListGarantiaTitle_almId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.almId}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListGarantiaTitle_repaIdNumorden}"/>
                             </f:facet>
                             <h:outputText value="#{item.repaIdNumorden}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cliente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaIdNumorden.artId.cliId.cliNombres} #{item.repaIdNumorden.artId.cliId.cliApellidos}"/>
+                        </p:column>                     
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{garantiaController.prepareCreate}" update=":GarantiaCreateForm" oncomplete="PF('GarantiaCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundleadmin.View}" update=":GarantiaViewForm" oncomplete="PF('GarantiaViewDialog').show()" disabled="#{empty garantiaController.selected}"/>

@@ -56,10 +56,8 @@ public class ClienteController implements Serializable {
     }    
     
     //carga la lista de los clientes del sistema
-    public String clienteCargarLista(){
-        //cliente = new Cliente();
-        System.out.println("En clienteCargarLista()");
-        return "/admin/cliente/ListClientes";
+    public String cargarLista(){
+        return "/admin/cliente/List";
     }
     
     //limpia el cliente para que no queden datos basura

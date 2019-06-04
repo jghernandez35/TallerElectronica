@@ -103,7 +103,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListTecnicoTitle_tipdocId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tipdocId}"/>
+                            <h:outputText value="#{item.tipdocId.tipdocNombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{tecnicoController.prepareCreate}" update=":TecnicoCreateForm" oncomplete="PF('TecnicoCreateDialog').show()"/>

@@ -61,7 +61,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListRepuestoTitle_tiporepuId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.tiporepuId}"/>
+                            <h:outputText value="#{item.tiporepuId.tiporepuNombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{repuestoController.prepareCreate}" update=":RepuestoCreateForm" oncomplete="PF('RepuestoCreateDialog').show()"/>

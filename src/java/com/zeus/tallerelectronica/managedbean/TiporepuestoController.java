@@ -48,7 +48,10 @@ public class TiporepuestoController implements Serializable {
     private TiporepuestoFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/tiporepuesto/List";
+    }
     public Tiporepuesto prepareCreate() {
         selected = new Tiporepuesto();
         initializeEmbeddableKey();

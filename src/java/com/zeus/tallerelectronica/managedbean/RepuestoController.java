@@ -48,7 +48,11 @@ public class RepuestoController implements Serializable {
     private RepuestoFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/repuesto/List";
+    }
+    
     public Repuesto prepareCreate() {
         selected = new Repuesto();
         initializeEmbeddableKey();

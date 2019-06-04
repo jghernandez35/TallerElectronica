@@ -12,8 +12,6 @@
             <h:form id="TipoarticuloCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoarticuloController.selected != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartId}" for="tipartId" />
-                        <p:inputText id="tipartId" value="#{tipoarticuloController.selected.tipartId}" title="#{bundleadmin.CreateTipoarticuloTitle_tipartId}" required="true" requiredMessage="#{bundleadmin.CreateTipoarticuloRequiredMessage_tipartId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartNombre}" for="tipartNombre" />
                         <p:inputText id="tipartNombre" value="#{tipoarticuloController.selected.tipartNombre}" title="#{bundleadmin.CreateTipoarticuloTitle_tipartNombre}" />
                         <p:outputLabel value="#{bundleadmin.CreateTipoarticuloLabel_tipartEstado}" for="tipartEstado" />

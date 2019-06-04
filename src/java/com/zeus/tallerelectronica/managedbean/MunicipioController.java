@@ -48,7 +48,11 @@ public class MunicipioController implements Serializable {
     private MunicipioFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/municipio/List";
+    }
+    
     public Municipio prepareCreate() {
         selected = new Municipio();
         initializeEmbeddableKey();
