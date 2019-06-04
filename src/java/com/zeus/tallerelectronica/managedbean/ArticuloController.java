@@ -120,7 +120,7 @@ public class ArticuloController implements Serializable {
         //garantia = null;
         //cliente = null;
     }
-    
+    //carga la lista de articulos
     public String articuloCargarLista(){
         return "/admin/articulo/ListArticulos";
     }

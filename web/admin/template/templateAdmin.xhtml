@@ -22,15 +22,54 @@
                 <h:form id="menuForm">
                     <p:growl id="messages" showDetail="false"/>
                     <p:menu style="padding: 10px">
+                            <p:submenu label="Almacenes">
+                                <p:menuitem value="Lista Almacenes" action="#{almacenController.almacenCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>   
+                            <p:submenu label="Articulos">
+                                <p:menuitem value="Lista Artículos" action="#{articuloController.articuloCargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
+                            </p:submenu>                        
                             <p:submenu label="Clientes">
                                 <p:menuitem value="Lista Clientes" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>
-                            <p:submenu label="Articulos">
-                                <p:menuitem value="Lista Artículos" action="#{articuloController.articuloCargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
+                            <p:submenu label="Departamento">
+                                <p:menuitem value="Lista Departamentos" action="#{departamentoController.departamentoCargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>
+                        
+                            <p:submenu label="Estados Servcio">
+                                <p:menuitem value="Lista Estados Servcio" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>                          
+                            <p:submenu label="Garantía ">
+                                <p:menuitem value="Lista de Garantías" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>                          
+                            <p:submenu label="Marcas ">
+                                <p:menuitem value="Lista de Marcas" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>                          
+                            <p:submenu label="Municipios ">
+                                <p:menuitem value="Lista de Municipios" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>  
                             <p:submenu label="Reparaciones">
                                 <p:menuitem value="Lista Reparaciones" action="#{articuloController.articuloCargarLista()}" icon="pi pi-home"/>
-                            </p:submenu>
+                            </p:submenu>                        
+                            <p:submenu label="Repuestos ">
+                                <p:menuitem value="Lista de Repuestos" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu> 
+                            <p:submenu label="Rol ">
+                                <p:menuitem value="Lista de Roles" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu> 
+                            <p:submenu label="Tecnicos ">
+                                <p:menuitem value="Lista de Tecnicos" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu> 
+                            <p:submenu label="Tipo Articulo ">
+                                <p:menuitem value="Lista Tipo Articulos" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu> 
+                            <p:submenu label="Tipo Documento ">
+                                <p:menuitem value="Lista Tipos Documento" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu> 
+                            <p:submenu label="Tipo Repuesto ">
+                                <p:menuitem value="Lista Tipos Repuesto" action="#{clienteController.clienteCargarLista()}" update="messages" icon="pi pi-save" />
+                            </p:submenu>                         
+                        
+
                     </p:menu>                    
                 </h:form>                
             </p:layoutUnit>            

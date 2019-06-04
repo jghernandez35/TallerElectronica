@@ -48,7 +48,13 @@ public class AlmacenController implements Serializable {
     private AlmacenFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista de los almaceness del sistema
+    public String almacenCargarLista(){
+        //cliente = new Cliente();
+        System.out.println("En almacenCargarLista()");
+        return "/admin/almacen/List";
+    }
+    
     public Almacen prepareCreate() {
         selected = new Almacen();
         initializeEmbeddableKey();

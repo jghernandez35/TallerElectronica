@@ -12,8 +12,6 @@
             <h:form id="ArticuloCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articuloController.articulo != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_artId}" for="artId" />
-                        <p:inputText id="artId" value="#{articuloController.articulo.artId}" title="#{bundleadmin.CreateArticuloTitle_artId}" required="true" requiredMessage="#{bundleadmin.CreateArticuloRequiredMessage_artId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_artModelo}" for="artModelo" />
                         <p:inputText id="artModelo" value="#{articuloController.articulo.artModelo}" title="#{bundleadmin.CreateArticuloTitle_artModelo}" />
                         <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_artSerial}" for="artSerial" />
@@ -26,19 +24,22 @@
                         <p:selectOneMenu id="marId" value="#{articuloController.articulo.marId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_marId}">
                             <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"
                                            var="marIdItem"
-                                           itemValue="#{marIdItem}"/>
+                                           itemValue="#{marIdItem}"
+                                           itemLabel="#{marIdItem.marNombre}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_tipartId}" for="tipartId" />
                         <p:selectOneMenu id="tipartId" value="#{articuloController.articulo.tipartId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_tipartId}">
                             <f:selectItems value="#{tipoarticuloController.itemsAvailableSelectOne}"
                                            var="tipartIdItem"
-                                           itemValue="#{tipartIdItem}"/>
+                                           itemValue="#{tipartIdItem}"
+                                           itemLabel="#{tipartIdItem.tipartNombre}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_cliId}" for="cliId" />
                         <p:selectOneMenu id="cliId" value="#{articuloController.articulo.cliId}" required="true" requiredMessage="#{bundleadmin.EditArticuloRequiredMessage_cliId}">
                             <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
                                            var="cliIdItem"
-                                           itemValue="#{cliIdItem}"/>
+                                           itemValue="#{cliIdItem}"
+                                           itemLabel="#{cliIdItem.cliNombres} #{cliIdItem.cliApellidos}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{articuloController.create}" value="#{bundleadmin.Save}" update="display,:ArticuloListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArticuloCreateDialog');"/>

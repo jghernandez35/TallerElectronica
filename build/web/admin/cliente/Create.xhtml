@@ -12,8 +12,6 @@
             <h:form id="ClienteCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
-                        <p:outputLabel value="#{bundleadmin.CreateClienteLabel_cliId}" for="cliId" />
-                        <p:inputText id="cliId" value="#{clienteController.cliente.cliId}" title="#{bundleadmin.CreateClienteTitle_cliId}" required="true" requiredMessage="#{bundleadmin.CreateClienteRequiredMessage_cliId}"/>
                         <p:outputLabel value="#{bundleadmin.CreateClienteLabel_tipdocId}" for="tipdocId" />
                         <p:selectOneMenu id="tipdocId" value="#{clienteController.cliente.tipdocId}" required="true" requiredMessage="#{bundleadmin.EditClienteRequiredMessage_tipdocId}">
                             <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"

@@ -48,7 +48,12 @@ public class DepartamentoController implements Serializable {
     private DepartamentoFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista de los departamentos del sistema
+    public String departamentoCargarLista(){
+        //cliente = new Cliente();
+        System.out.println("En departamentoCargarLista()");
+        return "/admin/departamento/List";
+    }
     public Departamento prepareCreate() {
         selected = new Departamento();
         initializeEmbeddableKey();
