@@ -6,9 +6,11 @@
 package com.zeus.tallerelectronica.sessionbean;
 
 import com.zeus.tallerelectronica.entidades.Articulo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,11 @@ public class ArticuloFacade extends AbstractFacade<Articulo> {
     public ArticuloFacade() {
         super(Articulo.class);
     }
-    
+    //busca los articulos asociados a un cliente mediante el id
+    public List<Articulo> listarArticulosCliente(Integer cliId) {
+        Query consulta=getEntityManager().createNamedQuery("Articulo.findByCliId");
+        consulta.setParameter("cliId",cliId);
+        List<Articulo> lista=consulta.getResultList();
+        return lista;        
+    }    
 }

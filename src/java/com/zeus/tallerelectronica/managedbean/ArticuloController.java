@@ -76,9 +76,9 @@ public class ArticuloController implements Serializable {
         this.ejbFacadeGarantia = ejbFacadeGarantia;
     }
 
-    public List<Articulo> getArticulos_cliente() {
-        return articulos_cliente;
-    }
+//    public List<Articulo> getArticulos_cliente() {
+//        return articulos_cliente;
+//    }
 
     public void setArticulos_cliente(List<Articulo> articulos_cliente) {
         this.articulos_cliente = articulos_cliente;
@@ -120,23 +120,10 @@ public class ArticuloController implements Serializable {
         //garantia = null;
         //cliente = null;
     }
-    //carga la lista de articulos
+    //** carga la lista de articulos
     public String cargarLista(){
         return "/admin/articulo/List";
     }
-    
-    public String prepareVerArticuloCliente_(Articulo a){
-        System.out.println("En prepareVerArticuloCliente(Articulo a)");
-        articulo = a;
-        return "/admin/articulo/ViewArticuloCliente";
-    } 
-    
-    //prepara la lista de articulos asociados a un cliente, el cliente llega desde ClienteController
-    public String prepareGestionArticulosCliente_(Cliente cli){   
-        System.out.println("En prepareGestionArticulosCliente(Cliente cli)");
-        cliente = cli;
-        return "/admin/articulo/ListArticulosCliente";
-    }  
     
     // prepara lo necesario para crear un articulo asociado a un cliente
     public String prepareCreateArticuloCliente_() {
@@ -188,7 +175,13 @@ public class ArticuloController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-
+    //**prepara la lista de articulos asociados a un cliente, el cliente llega desde ClienteController
+    public String prepareGestionArticulosCliente(Cliente cli){   
+        System.out.println("En prepareGestionArticulosCliente(Cliente cli)");
+        cliente = cli;
+        return "/admin/articulo/List_articulos_cliente";
+    }
+    
     public List<Articulo> getItems() {
         if (items == null) {
             items = getFacade().findAll();
@@ -196,9 +189,9 @@ public class ArticuloController implements Serializable {
         return items;
     }
 
-    //internamente se ejecuta consulta para sacar los Articulos asociados a un Cliente mediante el id 
-    public List<Articulo> getArticulos_cliente2() {
-        //articulos_cliente=getFacadeArticulo().listarArticulosCliente(cliente.getCliId());
+    //**internamente se ejecuta consulta para sacar los Articulos asociados a un Cliente mediante el id 
+    public List<Articulo> getArticulos_cliente() {
+        articulos_cliente=getEjbFacadeArticulo().listarArticulosCliente(cliente.getCliId());
         return articulos_cliente;
     }
     // para sacar la fecha del sistema

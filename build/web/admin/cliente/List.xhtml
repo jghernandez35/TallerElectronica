@@ -22,76 +22,70 @@
                                  rowKey="#{item.cliId}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No se han encontrado resultados"
+                                 widgetVar="ListDialog" 
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <f:facet name="header">
+                             <p:outputPanel>
+                                 <h:outputText value="Buscar en todos los campos: " />
+                                 <p:inputText 
+                                     id="globalFilter" 
+                                     onkeyup="PF('ListDialog').filter()" 
+                                     style="width:350px" 
+                                     placeholder="Digite palabra a buscar"/>
+                             </p:outputPanel>
+                         </f:facet>                           
+                        
+                        <p:column filterBy="#{item.cliId}" headerText="#{bundleadmin.ListClienteTitle_cliId}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliId}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliId}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_tipdocId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tipdocId.tipdocNombre}"/>
-                        </p:column>                        
-                        <p:column>
+                        </p:column>                       
+                        <p:column filterBy="#{item.cliDocumento}" headerText="#{bundleadmin.ListClienteTitle_cliDocumento}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliDocumento}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliDocumento}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.cliNombres}" headerText="#{bundleadmin.ListClienteTitle_cliNombres}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliNombres}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliNombres}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.cliApellidos}" headerText="#{bundleadmin.ListClienteTitle_cliApellidos}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliApellidos}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliApellidos}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.cliDireccion}" headerText="#{bundleadmin.ListClienteTitle_cliDireccion}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliDireccion}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliDireccion}"/>
-                        </p:column> 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_depId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.depId.depNombre}"/>
-                        </p:column>                        
-                        <p:column>
+                        </p:column>                       
+                        <p:column filterBy="#{item.cliTelefono1}" headerText="#{bundleadmin.ListClienteTitle_cliTelefono1}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono1}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliTelefono1}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.cliTelefono2}" headerText="#{bundleadmin.ListClienteTitle_cliTelefono2}" filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono2}"/>
                             </f:facet>
                             <h:outputText value="#{item.cliTelefono2}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoaltnombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliContactoaltnombre}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoalttelefono}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliContactoalttelefono}"/>
+                        <p:column headerText="Acciones" style="width: 60px">                         
+                            <p:commandLink title="Artículos" style="margin-left: 5px;" action="#{articuloController.prepareGestionArticulosCliente(item)}" ajax="false">                                    
+                                <p:graphicImage  library="images" name="articulo-articulo.png"/>
+                            </p:commandLink>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{clienteController.prepareCreate}" update=":ClienteCreateForm" oncomplete="PF('ClienteCreateDialog').show()"/>

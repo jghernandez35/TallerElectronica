@@ -15,8 +15,8 @@
     <h:body>
         <p:growl id="growl" life="3000" />
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="165" header="#{bundleadmin.AppName}">
-            <h:graphicImage library="images" name="banner4.jpg" width="100%" height="100%" />
+            <p:layoutUnit position="north" size="95" header="#{bundleadmin.AppName}">
+            <h:graphicImage library="images" name="banner4_2.jpg" width="100%" height="100%" />
             </p:layoutUnit>
             <p:layoutUnit position="west" size="180" header="Menu" collapsible="true">
                 <h:form id="menuForm">
@@ -39,9 +39,9 @@
                                 <p:menuitem value="Departamentos" action="#{departamentoController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Municipios" action="#{municipioController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Tipo de Articulos" action="#{tipoarticuloController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Tipos de Documento" action="#{tipodocumentoController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Tipos de Repuestos" action="#{tiporepuestoController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Lista de Roles" action="#{rolController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Tipos Documento" action="#{tipodocumentoController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Tipos Repuestos" action="#{tiporepuestoController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Lista Rol" action="#{rolController.cargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>                          
                     </p:menu>                    
                 </h:form>                
