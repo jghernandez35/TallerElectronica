@@ -8,8 +8,8 @@
 
     <ui:composition>
 
-        <p:dialog id="ArticuloCreateDlg" widgetVar="ArticuloCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.CreateArticuloTitle}">
-            <h:form id="ArticuloCreateForm">
+        <p:dialog id="ArticuloCreateDlg" widgetVar="ArticuloCreateDialog" modal="true" resizable="true" appendTo="@(body)" header="#{bundleadmin.CreateArticuloTitle}">
+            <h:form id="ArticuloCreateForm" style="align-items: stretch">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{articuloController.articulo != null}">
                         <p:outputLabel value="#{bundleadmin.CreateArticuloLabel_artModelo}" for="artModelo" />

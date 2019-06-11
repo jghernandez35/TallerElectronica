@@ -8,8 +8,8 @@
 
     <ui:composition>
 
-        <p:dialog id="ClienteCreateDlg" widgetVar="ClienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.CreateClienteTitle}">
-            <h:form id="ClienteCreateForm">
+        <p:dialog id="ClienteCreateDlg" widgetVar="ClienteCreateDialog" modal="true" resizable="true" appendTo="@(body)" header="#{bundleadmin.CreateClienteTitle}">
+            <h:form id="ClienteCreateForm" style="align-items: stretch">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{clienteController.cliente != null}">
                         <p:outputLabel value="#{bundleadmin.CreateClienteLabel_tipdocId}" for="tipdocId" />

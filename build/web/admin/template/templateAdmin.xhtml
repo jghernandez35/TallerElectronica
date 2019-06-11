@@ -23,12 +23,12 @@
                     <p:growl id="messages" showDetail="false"/>
                     <p:menu style="padding: 10px">
                             <p:submenu label="Personas">
-                                <p:menuitem value="Lista Clientes" action="#{clienteController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Clientes" action="#{clienteController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Tecnicos" action="#{tecnicoController.cargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>                                                                                                 
                             <p:submenu label="Reparaciones">
                                 <p:menuitem value="Reparaciones" action="#{reparacionController.cargarLista()}" icon="pi pi-home"/>
-                                <p:menuitem value="Lista Artículos" action="#{articuloController.cargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
+                                <p:menuitem value="Artículos" action="#{articuloController.cargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Garantías" action="#{garantiaController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Repuestos" action="#{repuestoController.cargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>
@@ -36,11 +36,11 @@
                                 <p:menuitem value="Almacenes" action="#{almacenController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Estados Servcio" action="#{estadoservicioController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Marcas" action="#{marcaController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Departamentos" action="#{departamentoController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Municipios" action="#{municipioController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Tipo de Articulos" action="#{tipoarticuloController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Tipos Documento" action="#{tipodocumentoController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Tipos Repuestos" action="#{tiporepuestoController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Departamentos" action="#{departamentoController.cargarLista()}" update="messages" icon="pi pi-save" />
+                                <p:menuitem value="Municipios" action="#{municipioController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Lista Rol" action="#{rolController.cargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>                          
                     </p:menu>                    
@@ -51,9 +51,9 @@
                 <ui:insert name="body"/>
             </p:layoutUnit>
             
-            <p:layoutUnit position="south" size="60" style="text-align: center">
+            <p:layoutUnit position="south" size="25" style="text-align: center">
                 <ui:insert name="footer"/>
-                    <h3>Direccion Calle 5 # 20 - 47 Barrio Jose Maria Obando Popayán (Colombia) -- Teléfonos Fijo: 8383089 - Celular: 315 5503862 -- Horario: Lunes a Viernes 8:00 am - 6:00 pm</h3>
+                <b>Direccion Calle 5 # 20 - 47 Barrio Jose Maria Obando Popayán (Colombia) -- Teléfonos Fijo: 8383089 - Celular: 315 5503862 -- Horario: Lunes a Viernes 8:00 am - 6:00 pm</b>
             </p:layoutUnit>
 
 

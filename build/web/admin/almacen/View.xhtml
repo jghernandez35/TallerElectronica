@@ -8,8 +8,8 @@
 
     <ui:composition>
 
-        <p:dialog id="AlmacenViewDlg" widgetVar="AlmacenViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleadmin.ViewAlmacenTitle}">
-            <h:form id="AlmacenViewForm">
+        <p:dialog id="AlmacenViewDlg" widgetVar="AlmacenViewDialog" modal="true" resizable="true" appendTo="@(body)" header="#{bundleadmin.ViewAlmacenTitle}">
+            <h:form id="AlmacenViewForm" style="align-items: stretch">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{almacenController.selected != null}">
                         <h:outputText value="#{bundleadmin.ViewAlmacenLabel_almId}"/>

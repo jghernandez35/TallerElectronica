@@ -6,9 +6,11 @@
 package com.zeus.tallerelectronica.sessionbean;
 
 import com.zeus.tallerelectronica.entidades.Cliente;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,15 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
         super(Cliente.class);
     }
     
+    public boolean buscarPorNumeroIdentificacion(int cliCedula) {
+        Query buscarIden = getEntityManager().createNamedQuery("Cliente.findByCliCedula");
+        buscarIden.setParameter("cliCedula", cliCedula);
+        List<Cliente> lista= buscarIden.getResultList();
+
+        if(lista.size()==0){
+            return false;
+        }else{
+           return true;
+        }
+    }      
 }
