@@ -29,10 +29,22 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaIdNumorden}"/>
+                                <h:outputText  value="#{bundleadmin.ListReparacionTitle_repaIdNumorden}"/>
                             </f:facet>
                             <h:outputText value="#{item.repaIdNumorden}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaTipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaTipo}"/>
+                        </p:column>                         
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_estId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estId.estNombre}"/>
+                        </p:column>                                                   
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFechaingreso}"/>
@@ -40,33 +52,13 @@
                             <h:outputText value="#{item.repaFechaingreso}">
                                 <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
-                        </p:column>
+                        </p:column>                        
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFechasalida}"/>
+                                <h:outputText value="#{bundleadmin.ViewClientecliente}"/>
                             </f:facet>
-                            <h:outputText value="#{item.repaFechasalida}">
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaReportetecnico}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.repaReportetecnico}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaPreciomanoobra}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.repaPreciomanoobra}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFalla}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.repaFalla}"/>
-                        </p:column>
+                            <h:outputText value="#{item.artId.cliId.cliNombres} #{item.artId.cliId.cliApellidos}"/>
+                        </p:column>                        
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListReparacionTitle_artId}"/>
@@ -75,9 +67,21 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_estId}"/>
+                                <h:outputText value="Marcaaa"/>
                             </f:facet>
-                            <h:outputText value="#{item.estId.estNombre}"/>
+                            <h:outputText value="#{item.artId.marId.marNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelooo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.artId.artModelo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Seriee"/>
+                            </f:facet>
+                            <h:outputText value="#{item.artId.artSerial}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -85,6 +89,9 @@
                             </f:facet>
                             <h:outputText value="#{item.tecId.tecNombres} #{item.tecId.tecApellidos}"/>
                         </p:column>
+                        <p:column headerText="Acciones" style="width: 60px">                         
+
+                        </p:column>                          
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{reparacionController.prepareCreate}" update=":ReparacionCreateForm" oncomplete="PF('ReparacionCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundleadmin.View}" update=":ReparacionViewForm" oncomplete="PF('ReparacionViewDialog').show()" disabled="#{empty reparacionController.selected}"/>

@@ -36,5 +36,5 @@ public class ArticuloFacade extends AbstractFacade<Articulo> {
         consulta.setParameter("cliId",cliId);
         List<Articulo> lista=consulta.getResultList();
         return lista;        
-    }    
+}
 }

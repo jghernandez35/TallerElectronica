@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../template/templateAdmin.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="CrearOrden"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="body">
+        <h:form>
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+            <p:wizard flowListener="#{reparacionController.onFlowProcess}">
+                <p:tab id="cliente" title="Cliente"><!--Nombre Boton Pestaña-->
+                    <p:panel header="#{bundleadmin.ListClienteTitle}"><!--Nombre seccion centrado-->
+                        <p:messages/>
+                        <h:form id="ClienteListForm">
+                            <p:dataTable id="datalist" value="#{clienteController.items}" var="item"
+                                         selectionMode="single" selection="#{reparacionController.cliente}"
+                                             paginator="true"
+                                             rowKey="#{item.cliId}"
+                                             rows="10"
+                                             rowsPerPageTemplate="10,20,30,40,50"
+                                             emptyMessage="No se han encontrado resultados de Clientes"
+                                             widgetVar="ListDialog" 
+                                             >
+                                    <f:facet name="header">
+                                     <p:outputPanel>
+                                         <h:outputText value="Buscar cliente en todos los campos: " />
+                                         <p:inputText 
+                                             id="globalFilter" 
+                                             onkeyup="PF('ListDialog').filter()" 
+                                             style="width:350px" 
+                                             placeholder="Digite la palabra a buscar"/>
+                                     </p:outputPanel>
+                                    </f:facet>
+
+                                    <p:column filterBy="#{item.cliDocumento}" headerText="#{bundleadmin.ListClienteTitle_cliDocumento}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliDocumento}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliDocumento}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliNombres}" headerText="#{bundleadmin.ListClienteTitle_cliNombres}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliNombres}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliNombres}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliApellidos}" headerText="#{bundleadmin.ListClienteTitle_cliApellidos}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliApellidos}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliApellidos}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliDireccion}" headerText="#{bundleadmin.ListClienteTitle_cliDireccion}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliDireccion}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliDireccion}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliTelefono1}" headerText="#{bundleadmin.ListClienteTitle_cliTelefono1}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono1}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliTelefono1}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliTelefono2}" headerText="#{bundleadmin.ListClienteTitle_cliTelefono2}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono2}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliTelefono2}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{item.cliContactoaltnombre} #{item.cliContactoalttelefono}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.Reparacion_cliContactoalt}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cliContactoaltnombre}-#{item.cliContactoalttelefono}"/>
+                                    </p:column>
+                                </p:dataTable>
+                        </h:form>                        
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="articulo" title="Articulo"><!--Nombre Boton Pestaña-->
+                    <p:panel header="Articulo"><!--Nombre seccion centrado-->
+                        <p:messages/>
+                        <h:form id="ArticuloListForm">
+                            <p:panel header="#{bundleadmin.ListArticuloTitle}">
+                                <p:dataTable id="datalist" value="#{articuloController.items}" var="itemArt"
+                                             selectionMode="single" selection="#{reparacionController.articulo}"
+                                             paginator="true"
+                                             rowKey="#{itemArt.artId}"
+                                             rows="10"
+                                             rowsPerPageTemplate="10,20,30,40,50"
+                                             emptyMessage="No se han encontrado resultados de Articulos"
+                                             widgetVar="ListDialog"                                              
+                                             >
+                                    <f:facet name="header">
+                                     <p:outputPanel>
+                                         <h:outputText value="Buscar articulo en todos los campos: " />
+                                         <p:inputText 
+                                             id="globalFilter" 
+                                             onkeyup="PF('ListDialog').filter()" 
+                                             style="width:350px" 
+                                             placeholder="Digite la palabra a buscar"/>
+                                     </p:outputPanel>
+                                    </f:facet>
+                                    
+                                    <p:column filterBy="#{itemArt.artId}" headerText="#{bundleadmin.ListArticuloTitle_artId}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_artId}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.artId}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.tipartId.tipartNombre}" headerText="#{bundleadmin.ListArticuloTitle_tipartId}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_tipartId}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.tipartId.tipartNombre}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.marId.marNombre}" headerText="#{bundleadmin.ListArticuloTitle_marId}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_marId}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.marId.marNombre}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.artModelo}" headerText="#{bundleadmin.ListArticuloTitle_artModelo}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_artModelo}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.artModelo}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.artSerial}" headerText="#{bundleadmin.ListArticuloTitle_artSerial}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_artSerial}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.artSerial}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.artAccesorios}" headerText="#{bundleadmin.ListArticuloTitle_artAccesorios}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_artAccesorios}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.artAccesorios}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.artObservaciones}" headerText="#{bundleadmin.ListArticuloTitle_artObservaciones}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_artObservaciones}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.artObservaciones}"/>
+                                    </p:column>
+                                    <p:column filterBy="#{itemArt.cliId.cliNombres} #{item.cliId.cliApellidos}" headerText="#{bundleadmin.ListArticuloTitle_cliId}" filterMatchMode="contains">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundleadmin.ListArticuloTitle_cliId}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemArt.cliId.cliNombres} #{item.cliId.cliApellidos}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panel>
+                        </h:form>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="falla" title="Falla"><!--Nombre Boton Pestaña-->
+                    <p:panel header="Informacion Falla">
+                        <p:messages/>
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <h:form id="ClienteViewForm" style="align-items: stretch">
+                                <h:panelGroup id="display">
+                                    <p:panelGrid columns="2" rendered="#{reparacionController.cliente != null}">
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliId}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliId}" title="#{bundleadmin.ViewClienteTitle_cliId}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_tipdocId}"/>
+                                        <h:outputText value="#{reparacionController.cliente.tipdocId.tipdocNombre}" title="#{bundleadmin.ViewClienteTitle_tipdocId}"/>                        
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliDocumento}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliDocumento}" title="#{bundleadmin.ViewClienteTitle_cliDocumento}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliNombres}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliNombres}" title="#{bundleadmin.ViewClienteTitle_cliNombres}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliApellidos}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliApellidos}" title="#{bundleadmin.ViewClienteTitle_cliApellidos}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliDireccion}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliDireccion}" title="#{bundleadmin.ViewClienteTitle_cliDireccion}"/>                        
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_depId}"/>
+                                        <h:outputText value="#{reparacionController.cliente.depId.depNombre}" title="#{bundleadmin.ViewClienteTitle_depId}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliTelefono1}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliTelefono1}" title="#{bundleadmin.ViewClienteTitle_cliTelefono1}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliTelefono2}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliTelefono2}" title="#{bundleadmin.ViewClienteTitle_cliTelefono2}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliEmail}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliEmail}" title="#{bundleadmin.ViewClienteTitle_cliEmail}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliLogin}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliLogin}" title="#{bundleadmin.ViewClienteTitle_cliLogin}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliContrasena}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliContrasena}" title="#{bundleadmin.ViewClienteTitle_cliContrasena}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliContactoaltnombre}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliContactoaltnombre}" title="#{bundleadmin.ViewClienteTitle_cliContactoaltnombre}"/>
+                                        <h:outputText value="#{bundleadmin.ViewClienteLabel_cliContactoalttelefono}"/>
+                                        <h:outputText value="#{reparacionController.cliente.cliContactoalttelefono}" title="#{bundleadmin.ViewClienteTitle_cliContactoalttelefono}"/>
+                                    </p:panelGrid>
+
+                                </h:panelGroup>
+                            <h:panelGroup id="display2">                        
+                                    <p:panelGrid columns="2" rendered="#{reparacionController.articulo != null}">
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artId}"/>
+                                        <h:outputText value="#{reparacionController.articulo.artId}" title="#{bundleadmin.ViewArticuloTitle_artId}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artModelo}"/>
+                                        <h:outputText value="#{reparacionController.articulo.artModelo}" title="#{bundleadmin.ViewArticuloTitle_artModelo}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artSerial}"/>
+                                        <h:outputText value="#{reparacionController.articulo.artSerial}" title="#{bundleadmin.ViewArticuloTitle_artSerial}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artAccesorios}"/>
+                                        <h:outputText value="#{reparacionController.articulo.artAccesorios}" title="#{bundleadmin.ViewArticuloTitle_artAccesorios}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_artObservaciones}"/>
+                                        <h:outputText value="#{reparacionController.articulo.artObservaciones}" title="#{bundleadmin.ViewArticuloTitle_artObservaciones}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_marId}"/>
+                                        <h:outputText value="#{reparacionController.articulo.marId.marNombre}" title="#{bundleadmin.ViewArticuloTitle_marId}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_tipartId}"/>
+                                        <h:outputText value="#{reparacionController.articulo.tipartId.tipartNombre}" title="#{bundleadmin.ViewArticuloTitle_tipartId}"/>
+                                        <h:outputText value="#{bundleadmin.ViewArticuloLabel_cliId}"/>
+                                        <h:outputText value="#{reparacionController.articulo.cliId.cliNombres} #{articuloController.articulo.cliId.cliApellidos}" title="#{bundleadmin.ViewArticuloTitle_cliId}"/>
+                                    </p:panelGrid>                        
+                            </h:panelGroup>                                
+                            </h:form>                            
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:form id="ArticuloViewForm" style="align-items: stretch">
+
+                        </h:form>                      
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="confirm" title="Confirmation"><!--Nombre Boton Pestaña-->
+                    <p:panel header="Confirmation">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Submit" action="#{userWizard.save}" update="growl" process="@this"/>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+
+        </h:form>
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Stateless
 public class MarcaFacade extends AbstractFacade<Marca> {

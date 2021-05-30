@@ -38,7 +38,7 @@ public class ArticuloController implements Serializable {
     private Cliente cliente;
     private Garantia garantia;
     private Date currentDate = new Date(); //creo que no es necesaria aqui sino en rearaciones asi como el import de DEATE
-    
+
     public ArticuloController() {
     }
 
@@ -59,7 +59,7 @@ public class ArticuloController implements Serializable {
     private ArticuloFacade getFacade() {
         return ejbFacadeArticulo;
     }
-
+    
     public ArticuloFacade getEjbFacadeArticulo() {
         return ejbFacadeArticulo;
     }
@@ -163,7 +163,7 @@ public class ArticuloController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-    
+
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundleadmin").getString("ArticuloUpdated"));
     }
@@ -181,7 +181,7 @@ public class ArticuloController implements Serializable {
         cliente = cli;
         return "/admin/articulo/List_articulos_cliente";
     }
-    
+
     public List<Articulo> getItems() {
         if (items == null) {
             items = getFacade().findAll();

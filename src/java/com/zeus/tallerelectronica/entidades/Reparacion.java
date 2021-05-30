@@ -45,6 +45,16 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Reparacion.findByRepaPreciomanoobra", query = "SELECT r FROM Reparacion r WHERE r.repaPreciomanoobra = :repaPreciomanoobra")})
 public class Reparacion implements Serializable {
 
+    @Size(max = 15)
+    @Column(name = "REPA_TIPO")
+    private String repaTipo;
+
+    @Size(max = 1200)
+    @Column(name = "REPA_REPORTECLIENTE")
+    private String repaReportecliente;
+    @Column(name = "REPA_ESTADO")
+    private Integer repaEstado;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -211,6 +221,30 @@ public class Reparacion implements Serializable {
     @Override
     public String toString() {
         return "com.zeus.tallerelectronica.entidades.Reparacion[ repaIdNumorden=" + repaIdNumorden + " ]";
+    }
+
+    public String getRepaReportecliente() {
+        return repaReportecliente;
+    }
+
+    public void setRepaReportecliente(String repaReportecliente) {
+        this.repaReportecliente = repaReportecliente;
+    }
+
+    public Integer getRepaEstado() {
+        return repaEstado;
+    }
+
+    public void setRepaEstado(Integer repaEstado) {
+        this.repaEstado = repaEstado;
+    }
+
+    public String getRepaTipo() {
+        return repaTipo;
+    }
+
+    public void setRepaTipo(String repaTipo) {
+        this.repaTipo = repaTipo;
     }
     
 }

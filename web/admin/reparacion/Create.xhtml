@@ -43,6 +43,12 @@
                                            itemValue="#{tecIdItem}"
                                            itemLabel="#{tecIdItem.tecNombres} #{tecIdItem.tecApellidos}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundleadmin.CreateReparacionLabel_repaReportecliente}" for="repaReportecliente" />
+                        <p:inputText id="repaReportecliente" value="#{reparacionController.selected.repaReportecliente}" title="#{bundleadmin.CreateReparacionTitle_repaReportecliente}" />
+                        <p:outputLabel value="#{bundleadmin.CreateReparacionLabel_repaEstado}" for="repaEstado" />
+                        <p:inputText id="repaEstado" value="#{reparacionController.selected.repaEstado}" title="#{bundleadmin.CreateReparacionTitle_repaEstado}" />
+                        <p:outputLabel value="#{bundleadmin.CreateReparacionLabel_repaTipo}" for="repaTipo" />
+                        <p:inputText id="repaTipo" value="#{reparacionController.selected.repaTipo}" title="#{bundleadmin.CreateReparacionTitle_repaTipo}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reparacionController.create}" value="#{bundleadmin.Save}" update="display,:ReparacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReparacionCreateDialog');"/>
                     <p:commandButton value="#{bundleadmin.Cancel}" onclick="ReparacionCreateDialog.hide()"/>

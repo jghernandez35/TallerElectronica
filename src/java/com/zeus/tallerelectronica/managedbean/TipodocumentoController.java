@@ -52,7 +52,7 @@ public class TipodocumentoController implements Serializable {
     public String cargarLista(){
         return "/admin/tipodocumento/List";
     }
-    
+
     public Tipodocumento prepareCreate() {
         selected = new Tipodocumento();
         initializeEmbeddableKey();

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -8,8 +8,15 @@
 
     <h:head>
         <title><ui:insert name="title">Titulo por Defecto</ui:insert></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <h:outputStylesheet library="css" name="usuario.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputScript library="js" name="login.js"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </h:head>
 
     <h:body>
@@ -22,17 +29,16 @@
                 <h:form id="menuForm">
                     <p:growl id="messages" showDetail="false"/>
                     <p:menu style="padding: 10px">
-                            <p:submenu label="Personas">
-                                <p:menuitem value="Clientes" action="#{clienteController.cargarLista()}" update="messages" icon="pi pi-save" />
-                                <p:menuitem value="Tecnicos" action="#{tecnicoController.cargarLista()}" update="messages" icon="pi pi-save" />
-                            </p:submenu>                                                                                                 
                             <p:submenu label="Reparaciones">
-                                <p:menuitem value="Reparaciones" action="#{reparacionController.cargarLista()}" icon="pi pi-home"/>
+                                <p:menuitem value="Inicio" action="#{reparacionController.inicio()}" update="messages" icon="pi pi-save" />                                  
+                                <p:menuitem value="Clientes" action="#{clienteController.cargarLista()}" update="messages" icon="pi pi-save" />                                
+                                <p:menuitem value="Orden Reparacion" action="#{reparacionController.cargarLista()}" icon="pi pi-home"/>
                                 <p:menuitem value="Artículos" action="#{articuloController.cargarLista()}"  update="messages" ajax="false" icon="pi pi-times"/>
                                 <p:menuitem value="Garantías" action="#{garantiaController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Repuestos" action="#{repuestoController.cargarLista()}" update="messages" icon="pi pi-save" />
                             </p:submenu>
                             <p:submenu label="Recursos">
+                                <p:menuitem value="Tecnicos" action="#{tecnicoController.cargarLista()}" update="messages" icon="pi pi-save" />                                
                                 <p:menuitem value="Almacenes" action="#{almacenController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Estados Servcio" action="#{estadoservicioController.cargarLista()}" update="messages" icon="pi pi-save" />
                                 <p:menuitem value="Marcas" action="#{marcaController.cargarLista()}" update="messages" icon="pi pi-save" />
@@ -48,6 +54,7 @@
             </p:layoutUnit>            
             
             <p:layoutUnit position="center">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <ui:insert name="body"/>
             </p:layoutUnit>
             

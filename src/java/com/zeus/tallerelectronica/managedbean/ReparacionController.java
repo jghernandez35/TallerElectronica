@@ -1,8 +1,11 @@
 package com.zeus.tallerelectronica.managedbean;
 
 import com.zeus.tallerelectronica.entidades.Reparacion;
+import com.zeus.tallerelectronica.entidades.Cliente;
+import com.zeus.tallerelectronica.entidades.Articulo;
 import com.zeus.tallerelectronica.managedbean.util.JsfUtil;
 import com.zeus.tallerelectronica.managedbean.util.JsfUtil.PersistAction;
+import com.zeus.tallerelectronica.sessionbean.ClienteFacade;
 import com.zeus.tallerelectronica.sessionbean.ReparacionFacade;
 
 import java.io.Serializable;
@@ -18,6 +21,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.FlowEvent;
 
 @Named("reparacionController")
 @SessionScoped
@@ -27,10 +31,66 @@ public class ReparacionController implements Serializable {
     private com.zeus.tallerelectronica.sessionbean.ReparacionFacade ejbFacade;
     private List<Reparacion> items = null;
     private Reparacion selected;
-
+    //------------------------------Cliente-------------------------------------
+    private com.zeus.tallerelectronica.sessionbean.ClienteFacade ejbFacadeCliente;
+    private Cliente cliente;
+    //------------------------------Articulo-------------------------------------
+    private com.zeus.tallerelectronica.sessionbean.ArticuloFacade ejbFacadeArticulo;
+    private Articulo articulo;    
+    //----------------------------Wizard-----------------------------------
+    private boolean skip;
+    
     public ReparacionController() {
     }
 
+    //----------------------------Inicio Metodos Cliente------------------------
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ClienteFacade getEjbFacadeCliente() {
+        return ejbFacadeCliente;
+    }
+
+    public void setEjbFacadeCliente(ClienteFacade ejbFacadeCliente) {
+        this.ejbFacadeCliente = ejbFacadeCliente;
+    }
+    
+    //-----------------------------Inicio Metodos Wizard------------------------
+
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+    
+    public String onFlowProcess(FlowEvent event) {
+            if(skip) {
+                    skip = false;	//reset in case user goes back
+                    return "confirm";
+            }
+            else {
+                    return event.getNewStep();
+            }
+    }
+    //---------------------------Inicio Metodos Articulo------------------------    
+
+    public Articulo getArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(Articulo articulo) {
+        this.articulo = articulo;
+    }
+    
+    //---------------------------------------Fin Metodos------------------------   
     public Reparacion getSelected() {
         return selected;
     }
@@ -48,10 +108,21 @@ public class ReparacionController implements Serializable {
     private ReparacionFacade getFacade() {
         return ejbFacade;
     }
+    
+    //carga Inicio
+    public String inicio(){
+        return "/admin/inicio/Inicio";
+    }    
+    
     //carga la lista Inicial
     public String cargarLista(){
         return "/admin/reparacion/List";
     }
+    
+    //crear nueva orden de servicio
+    public String crearNuevaOrden(){
+        return "/admin/reparacion/CreateReparacion";
+    }    
     
     public Reparacion prepareCreate() {
         selected = new Reparacion();

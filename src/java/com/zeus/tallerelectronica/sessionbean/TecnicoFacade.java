@@ -14,7 +14,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Stateless
 public class TecnicoFacade extends AbstractFacade<Tecnico> {
@@ -30,7 +30,7 @@ public class TecnicoFacade extends AbstractFacade<Tecnico> {
     public TecnicoFacade() {
         super(Tecnico.class);
     }
-
+    
     /*public boolean buscarPorEmail(String email) {
         Query query = getEntityManager().createNamedQuery("Usuario.findByEmail");
         query.setParameter("email", email);
@@ -39,7 +39,7 @@ public class TecnicoFacade extends AbstractFacade<Tecnico> {
             return true;
         } else {
             return false;
-        }
+}
     }*/
     
     public boolean buscarTecnicoPorLoginBool(String tecLogin) {

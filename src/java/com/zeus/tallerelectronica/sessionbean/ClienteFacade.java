@@ -14,7 +14,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Stateless
 public class ClienteFacade extends AbstractFacade<Cliente> {
@@ -40,6 +40,6 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
             return false;
         }else{
            return true;
-        }
+}
     }      
 }

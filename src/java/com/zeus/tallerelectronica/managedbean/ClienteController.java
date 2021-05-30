@@ -54,7 +54,7 @@ public class ClienteController implements Serializable {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }    
-    
+
     //carga la lista de los clientes del sistema
     public String cargarLista(){
         return "/admin/cliente/List";
@@ -101,7 +101,7 @@ public class ClienteController implements Serializable {
         limpiarCliente();
         return "/admin/cliente/ListClientes";
     }
-    
+
     public String cancelCrearCliente_() {
         System.out.println("En cancelCrearCliente()");
         limpiarCliente();
@@ -112,7 +112,7 @@ public class ClienteController implements Serializable {
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundleadmin").getString("ClienteUpdated"));
     }
-    
+
     //actualiza el cliente seleccionado
     public String update_() {
         System.out.println("En update()");
@@ -134,7 +134,7 @@ public class ClienteController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-    
+
     public String destroy_(Cliente c) {
         System.out.println("En destroy(Cliente c)");
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleGeneral").getString("ClienteDeleted"));

@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="admin/imagen/View.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="admin/tecnico/View.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="admin/tipodocumento/View.xhtml" x="1150" y="1050" zoom="true"/>
+        <Node id="admin/imagen/Create.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="admin/repuesto/Edit.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="admin/almacen/List.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="welcomePrimefaces.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="admin/tipodocumento/List.xhtml" x="2650" y="150" zoom="true"/>
+        <Node id="admin/tiporepuesto/List.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="admin/estadoservicio/Create.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="admin/imagen/Edit.xhtml" x="900" y="1200" zoom="true"/>
+        <Node id="admin/tipodocumento/Edit.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="admin/articulo/Create.xhtml" x="2650" y="300" zoom="true"/>
+        <Node id="admin/template/templateAdmin.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="admin/almacen/View.xhtml" x="650" y="1350" zoom="true"/>
+        <Node id="admin/repuesto/List.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="admin/tiporepuesto/Create.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="admin/municipio/Edit.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="admin/garantia/Edit.xhtml" x="2400" y="450" zoom="true"/>
+        <Node id="admin/imagen/List.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="admin/tecnico/Edit.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="admin/tecnico/List.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="admin/repuesto/View.xhtml" x="2150" y="450" zoom="true"/>
+        <Node id="admin/tiporepuesto/Edit.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="admin/tiporepuesto/View.xhtml" x="1400" y="900" zoom="true"/>
+        <Node id="admin/estadoservicio/Edit.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="1650" y="750" zoom="true"/>
+        <Node id="admin/cliente/Create.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="admin/reparacion/View.xhtml" x="2150" y="300" zoom="true"/>
+        <Node id="admin/municipio/View.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="admin/articulo/View.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="admin/reparacion/Create.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="admin/municipio/List.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="admin/articulo/List.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="admin/tipoarticulo/List.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="admin/municipio/Create.xhtml" x="400" y="1350" zoom="true"/>
+        <Node id="admin/rol/List.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="admin/cliente/List.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="admin/marca/Create.xhtml" x="1900" y="600" zoom="true"/>
+        <Node id="admin/tipoarticulo/View.xhtml" x="1900" y="450" zoom="true"/>
+        <Node id="admin/departamento/Edit.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="admin/rol/View.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="admin/cliente/View.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="admin/reparacion/List.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="admin/tipoarticulo/Edit.xhtml" x="400" y="1500" zoom="true"/>
+        <Node id="admin/articulo/List_articulos_cliente.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="admin/tipodocumento/Create.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="admin/departamento/List.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="admin/repuesto/Create.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="admin/marca/List.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="admin/garantia/List.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="admin/marca/View.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="template.xhtml" x="2900" y="150" zoom="true"/>
+        <Node id="admin/marca/Edit.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="admin/almacen/Create.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="admin/tecnico/Create.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="admin/tipoarticulo/Create.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="admin/rol/Create.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="admin/departamento/Create.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="admin/reparacion/Edit.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="admin/garantia/View.xhtml" x="150" y="1650" zoom="true"/>
+        <Node id="admin/almacen/Edit.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="admin/departamento/View.xhtml" x="400" y="1200" zoom="true"/>
+        <Node id="admin/estadoservicio/List.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="admin/estadoservicio/View.xhtml" x="650" y="1200" zoom="true"/>
+        <Node id="admin/articulo/Edit.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="admin/cliente/Edit.xhtml" x="1150" y="900" zoom="true"/>
+        <Node id="admin/garantia/Create.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="admin/rol/Edit.xhtml" x="2400" y="300" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
