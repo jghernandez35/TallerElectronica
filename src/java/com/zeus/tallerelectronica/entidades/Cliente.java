@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Entity
 @Table(name = "cliente")
@@ -73,10 +73,12 @@ public class Cliente implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "CLI_EMAIL")
     private String cliEmail;
+    @Size(max = 30)
     @Column(name = "CLI_LOGIN")
-    private BigInteger cliLogin;
+    private String cliLogin;
+    @Size(max = 240)
     @Column(name = "CLI_CONTRASENA")
-    private BigInteger cliContrasena;
+    private String cliContrasena;
     @Size(max = 30)
     @Column(name = "CLI_CONTACTOALTNOMBRE")
     private String cliContactoaltnombre;
@@ -89,7 +91,7 @@ public class Cliente implements Serializable {
     @ManyToOne(optional = false)
     private Departamento depId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliId")
-    private Collection<Articulo> articuloCollection;
+    private Collection<Reparacion> reparacionCollection;
 
     public Cliente() {
     }
@@ -162,19 +164,19 @@ public class Cliente implements Serializable {
         this.cliEmail = cliEmail;
     }
 
-    public BigInteger getCliLogin() {
+    public String getCliLogin() {
         return cliLogin;
     }
 
-    public void setCliLogin(BigInteger cliLogin) {
+    public void setCliLogin(String cliLogin) {
         this.cliLogin = cliLogin;
     }
 
-    public BigInteger getCliContrasena() {
+    public String getCliContrasena() {
         return cliContrasena;
     }
 
-    public void setCliContrasena(BigInteger cliContrasena) {
+    public void setCliContrasena(String cliContrasena) {
         this.cliContrasena = cliContrasena;
     }
 
@@ -211,12 +213,12 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Articulo> getArticuloCollection() {
-        return articuloCollection;
+    public Collection<Reparacion> getReparacionCollection() {
+        return reparacionCollection;
     }
 
-    public void setArticuloCollection(Collection<Articulo> articuloCollection) {
-        this.articuloCollection = articuloCollection;
+    public void setReparacionCollection(Collection<Reparacion> reparacionCollection) {
+        this.reparacionCollection = reparacionCollection;
     }
 
     @Override

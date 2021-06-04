@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Entity
 @Table(name = "articulo")
@@ -36,8 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Articulo.findAll", query = "SELECT a FROM Articulo a")
     , @NamedQuery(name = "Articulo.findByArtId", query = "SELECT a FROM Articulo a WHERE a.artId = :artId")
     , @NamedQuery(name = "Articulo.findByArtModelo", query = "SELECT a FROM Articulo a WHERE a.artModelo = :artModelo")
-    , @NamedQuery(name = "Articulo.findByArtSerial", query = "SELECT a FROM Articulo a WHERE a.artSerial = :artSerial")
-    , @NamedQuery(name = "Articulo.findByCliId", query = "SELECT a FROM Articulo a WHERE a.cliId.cliId = :cliId ")})
+    , @NamedQuery(name = "Articulo.findByArtSerial", query = "SELECT a FROM Articulo a WHERE a.artSerial = :artSerial")})
 public class Articulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,9 +67,6 @@ public class Articulo implements Serializable {
     @JoinColumn(name = "TIPART_ID", referencedColumnName = "TIPART_ID")
     @ManyToOne(optional = false)
     private Tipoarticulo tipartId;
-    @JoinColumn(name = "CLI_ID", referencedColumnName = "CLI_ID")
-    @ManyToOne(optional = false)
-    private Cliente cliId;
 
     public Articulo() {
     }
@@ -142,14 +138,6 @@ public class Articulo implements Serializable {
 
     public void setTipartId(Tipoarticulo tipartId) {
         this.tipartId = tipartId;
-    }
-
-    public Cliente getCliId() {
-        return cliId;
-    }
-
-    public void setCliId(Cliente cliId) {
-        this.cliId = cliId;
     }
 
     @Override

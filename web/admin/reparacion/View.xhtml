@@ -29,17 +29,21 @@
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaFalla}"/>
                         <h:outputText value="#{reparacionController.selected.repaFalla}" title="#{bundleadmin.ViewReparacionTitle_repaFalla}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_artId}"/>
-                        <h:outputText value="#{reparacionController.selected.artId}" title="#{bundleadmin.ViewReparacionTitle_artId}"/>
+                        <h:outputText value="#{reparacionController.selected.artId.tipartId.tipartNombre} #{reparacionController.selected.artId.marId.marNombre} #{reparacionController.selected.artId.artModelo}" title="#{bundleadmin.ViewReparacionTitle_artId}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_estId}"/>
-                        <h:outputText value="#{reparacionController.selected.estId}" title="#{bundleadmin.ViewReparacionTitle_estId}"/>
+                        <h:outputText value="#{reparacionController.selected.estId.estNombre}" title="#{bundleadmin.ViewReparacionTitle_estId}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_tecId}"/>
-                        <h:outputText value="#{reparacionController.selected.tecId}" title="#{bundleadmin.ViewReparacionTitle_tecId}"/>
+                        <h:outputText value="#{reparacionController.selected.tecId.tecNombres}" title="#{bundleadmin.ViewReparacionTitle_tecId}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaReportecliente}"/>
                         <h:outputText value="#{reparacionController.selected.repaReportecliente}" title="#{bundleadmin.ViewReparacionTitle_repaReportecliente}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaEstado}"/>
                         <h:outputText value="#{reparacionController.selected.repaEstado}" title="#{bundleadmin.ViewReparacionTitle_repaEstado}"/>
                         <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaTipo}"/>
                         <h:outputText value="#{reparacionController.selected.repaTipo}" title="#{bundleadmin.ViewReparacionTitle_repaTipo}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_repaPreciototal}"/>
+                        <h:outputText value="#{reparacionController.selected.repaPreciototal}" title="#{bundleadmin.ViewReparacionTitle_repaPreciototal}"/>
+                        <h:outputText value="#{bundleadmin.ViewReparacionLabel_cliId}"/>
+                        <h:outputText value="#{reparacionController.selected.cliId.cliNombres} #{reparacionController.selected.cliId.cliApellidos}" title="#{bundleadmin.ViewReparacionTitle_cliId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundleadmin.Close}" onclick="ReparacionViewDialog.hide()"/>
                 </h:panelGroup>

@@ -35,18 +35,6 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaTipo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.repaTipo}"/>
-                        </p:column> 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_estId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estId.estNombre}"/>
-                        </p:column>                        
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFechaingreso}"/>
                             </f:facet>
                             <h:outputText value="#{item.repaFechaingreso}">
@@ -55,34 +43,78 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_cliId}"/>
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFechasalida}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cliId.cliNombres} #{item.cliId.cliApellidos}"/>
-                        </p:column>                        
+                            <h:outputText value="#{item.repaFechasalida}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_artId}"/>
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaReportetecnico}"/>
                             </f:facet>
-                            <h:outputText value="#{item.artId.tipartId.tipartNombre}"/>
-                        </p:column>                        
+                            <h:outputText value="#{item.repaReportetecnico}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_artIdMarca}"/>
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaPreciomanoobra}"/>
                             </f:facet>
-                            <h:outputText value="#{item.artId.marId.marNombre}"/>
-                        </p:column>                        
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListReparacionTitle_artIdModelo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.artId.artModelo}"/>
-                        </p:column> 
+                            <h:outputText value="#{item.repaPreciomanoobra}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundleadmin.ListReparacionTitle_repaFalla}"/>
                             </f:facet>
                             <h:outputText value="#{item.repaFalla}"/>
-                        </p:column>                        
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_artId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.artId.tipartId.tipartNombre} #{item.artId.marId.marNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_estId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estId.estNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_tecId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tecId.tecNombres}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaReportecliente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaReportecliente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaEstado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaTipo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaTipo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_repaPreciototal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.repaPreciototal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundleadmin.ListReparacionTitle_cliId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cliId.cliNombres}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundleadmin.Create}" actionListener="#{reparacionController.prepareCreate}" update=":ReparacionCreateForm" oncomplete="PF('ReparacionCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundleadmin.View}" update=":ReparacionViewForm" oncomplete="PF('ReparacionViewDialog').show()" disabled="#{empty reparacionController.selected}"/>

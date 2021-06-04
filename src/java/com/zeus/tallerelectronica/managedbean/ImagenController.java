@@ -48,7 +48,11 @@ public class ImagenController implements Serializable {
     private ImagenFacade getFacade() {
         return ejbFacade;
     }
-
+    //carga la lista Inicial
+    public String cargarLista(){
+        return "/admin/imagen/List";
+    }
+    
     public Imagen prepareCreate() {
         selected = new Imagen();
         initializeEmbeddableKey();

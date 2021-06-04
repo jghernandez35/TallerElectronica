@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Entity
 @Table(name = "reparacion")
@@ -40,20 +40,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Reparacion.findAll", query = "SELECT r FROM Reparacion r")
     , @NamedQuery(name = "Reparacion.findByRepaIdNumorden", query = "SELECT r FROM Reparacion r WHERE r.repaIdNumorden = :repaIdNumorden")
     , @NamedQuery(name = "Reparacion.findByRepaFechaingreso", query = "SELECT r FROM Reparacion r WHERE r.repaFechaingreso = :repaFechaingreso")
+    , @NamedQuery(name = "Reparacion.findByRepaTipo", query = "SELECT r FROM Reparacion r WHERE r.repaTipo = :repaTipo")
     , @NamedQuery(name = "Reparacion.findByRepaFechasalida", query = "SELECT r FROM Reparacion r WHERE r.repaFechasalida = :repaFechasalida")
     , @NamedQuery(name = "Reparacion.findByRepaReportetecnico", query = "SELECT r FROM Reparacion r WHERE r.repaReportetecnico = :repaReportetecnico")
-    , @NamedQuery(name = "Reparacion.findByRepaPreciomanoobra", query = "SELECT r FROM Reparacion r WHERE r.repaPreciomanoobra = :repaPreciomanoobra")})
+    , @NamedQuery(name = "Reparacion.findByRepaReportecliente", query = "SELECT r FROM Reparacion r WHERE r.repaReportecliente = :repaReportecliente")
+    , @NamedQuery(name = "Reparacion.findByRepaPreciomanoobra", query = "SELECT r FROM Reparacion r WHERE r.repaPreciomanoobra = :repaPreciomanoobra")
+    , @NamedQuery(name = "Reparacion.findByRepaPreciototal", query = "SELECT r FROM Reparacion r WHERE r.repaPreciototal = :repaPreciototal")
+    , @NamedQuery(name = "Reparacion.findByRepaEstado", query = "SELECT r FROM Reparacion r WHERE r.repaEstado = :repaEstado")})
 public class Reparacion implements Serializable {
-
-    @Size(max = 15)
-    @Column(name = "REPA_TIPO")
-    private String repaTipo;
-
-    @Size(max = 1200)
-    @Column(name = "REPA_REPORTECLIENTE")
-    private String repaReportecliente;
-    @Column(name = "REPA_ESTADO")
-    private Integer repaEstado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,18 +58,28 @@ public class Reparacion implements Serializable {
     @Column(name = "REPA_FECHAINGRESO")
     @Temporal(TemporalType.DATE)
     private Date repaFechaingreso;
+    @Size(max = 15)
+    @Column(name = "REPA_TIPO")
+    private String repaTipo;
     @Column(name = "REPA_FECHASALIDA")
     @Temporal(TemporalType.DATE)
     private Date repaFechasalida;
     @Size(max = 1200)
     @Column(name = "REPA_REPORTETECNICO")
     private String repaReportetecnico;
+    @Size(max = 1200)
+    @Column(name = "REPA_REPORTECLIENTE")
+    private String repaReportecliente;
     @Column(name = "REPA_PRECIOMANOOBRA")
     private Integer repaPreciomanoobra;
+    @Column(name = "REPA_PRECIOTOTAL")
+    private Integer repaPreciototal;
     @Lob
     @Size(max = 2147483647)
     @Column(name = "REPA_FALLA")
     private String repaFalla;
+    @Column(name = "REPA_ESTADO")
+    private Integer repaEstado;
     @ManyToMany(mappedBy = "reparacionCollection")
     private Collection<Repuesto> repuestoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "repaIdNumorden")
@@ -85,6 +89,9 @@ public class Reparacion implements Serializable {
     @JoinColumn(name = "ART_ID", referencedColumnName = "ART_ID")
     @ManyToOne(optional = false)
     private Articulo artId;
+    @JoinColumn(name = "CLI_ID", referencedColumnName = "CLI_ID")
+    @ManyToOne(optional = false)
+    private Cliente cliId;
     @JoinColumn(name = "EST_ID", referencedColumnName = "EST_ID")
     @ManyToOne(optional = false)
     private Estadoservicio estId;
@@ -115,6 +122,14 @@ public class Reparacion implements Serializable {
         this.repaFechaingreso = repaFechaingreso;
     }
 
+    public String getRepaTipo() {
+        return repaTipo;
+    }
+
+    public void setRepaTipo(String repaTipo) {
+        this.repaTipo = repaTipo;
+    }
+
     public Date getRepaFechasalida() {
         return repaFechasalida;
     }
@@ -131,6 +146,14 @@ public class Reparacion implements Serializable {
         this.repaReportetecnico = repaReportetecnico;
     }
 
+    public String getRepaReportecliente() {
+        return repaReportecliente;
+    }
+
+    public void setRepaReportecliente(String repaReportecliente) {
+        this.repaReportecliente = repaReportecliente;
+    }
+
     public Integer getRepaPreciomanoobra() {
         return repaPreciomanoobra;
     }
@@ -139,12 +162,28 @@ public class Reparacion implements Serializable {
         this.repaPreciomanoobra = repaPreciomanoobra;
     }
 
+    public Integer getRepaPreciototal() {
+        return repaPreciototal;
+    }
+
+    public void setRepaPreciototal(Integer repaPreciototal) {
+        this.repaPreciototal = repaPreciototal;
+    }
+
     public String getRepaFalla() {
         return repaFalla;
     }
 
     public void setRepaFalla(String repaFalla) {
         this.repaFalla = repaFalla;
+    }
+
+    public Integer getRepaEstado() {
+        return repaEstado;
+    }
+
+    public void setRepaEstado(Integer repaEstado) {
+        this.repaEstado = repaEstado;
     }
 
     @XmlTransient
@@ -180,6 +219,14 @@ public class Reparacion implements Serializable {
 
     public void setArtId(Articulo artId) {
         this.artId = artId;
+    }
+
+    public Cliente getCliId() {
+        return cliId;
+    }
+
+    public void setCliId(Cliente cliId) {
+        this.cliId = cliId;
     }
 
     public Estadoservicio getEstId() {
@@ -221,30 +268,6 @@ public class Reparacion implements Serializable {
     @Override
     public String toString() {
         return "com.zeus.tallerelectronica.entidades.Reparacion[ repaIdNumorden=" + repaIdNumorden + " ]";
-    }
-
-    public String getRepaReportecliente() {
-        return repaReportecliente;
-    }
-
-    public void setRepaReportecliente(String repaReportecliente) {
-        this.repaReportecliente = repaReportecliente;
-    }
-
-    public Integer getRepaEstado() {
-        return repaEstado;
-    }
-
-    public void setRepaEstado(Integer repaEstado) {
-        this.repaEstado = repaEstado;
-    }
-
-    public String getRepaTipo() {
-        return repaTipo;
-    }
-
-    public void setRepaTipo(String repaTipo) {
-        this.repaTipo = repaTipo;
     }
     
 }

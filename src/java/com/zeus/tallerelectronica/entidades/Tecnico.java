@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Entity
 @Table(name = "tecnico")
@@ -85,7 +85,7 @@ public class Tecnico implements Serializable {
     @Lob
     @Column(name = "TEC_IMAGEN")
     private byte[] tecImagen;
-    @JoinTable(name = "grupo", joinColumns = {
+    @JoinTable(name = "tec_tiene_grupo", joinColumns = {
         @JoinColumn(name = "TEC_ID", referencedColumnName = "TEC_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "ROL_ID", referencedColumnName = "ROL_ID")})
     @ManyToMany

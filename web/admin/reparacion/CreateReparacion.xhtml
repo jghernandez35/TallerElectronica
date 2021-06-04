@@ -23,13 +23,14 @@
                         <h:form id="ClienteListForm">
                             <p:dataTable id="datalist" value="#{clienteController.items}" var="item"
                                          selectionMode="single" selection="#{reparacionController.cliente}"
-                                             paginator="true"
-                                             rowKey="#{item.cliId}"
-                                             rows="10"
-                                             rowsPerPageTemplate="10,20,30,40,50"
-                                             emptyMessage="No se han encontrado resultados de Clientes"
-                                             widgetVar="ListDialog" 
-                                             >
+                                         paginatorPosition="bottom"
+                                         paginator="true"
+                                         rowKey="#{item.cliId}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         emptyMessage="No se han encontrado resultados de Clientes"
+                                         widgetVar="ListDialog" 
+                                         >
                                     <f:facet name="header">
                                      <p:outputPanel>
                                          <h:outputText value="Buscar cliente en todos los campos: " />
@@ -83,18 +84,24 @@
                                         </f:facet>
                                         <h:outputText value="#{item.cliContactoaltnombre}-#{item.cliContactoalttelefono}"/>
                                     </p:column>
+                                    <p:column headerText="" style="width: 60px">                         
+                                        <p:commandLink title="Seleccionar" style="margin-left: 5px;" action="#{reparacionController.seleccionarArticulo(item)}" ajax="false">                                    
+                                            <p:graphicImage  library="images" name="articulo-articulo.png"/>
+                                        </p:commandLink>
+                                    </p:column>                                 
                                 </p:dataTable>
                         </h:form>                        
                     </p:panel>
                 </p:tab>
 
                 <p:tab id="articulo" title="Articulo"><!--Nombre Boton Pestaña-->
-                    <p:panel header="Articulo"><!--Nombre seccion centrado-->
+                    <p:panel header="#{bundleadmin.ListArticuloTitle}"><!--Nombre seccion centrado-->
                         <p:messages/>
                         <h:form id="ArticuloListForm">
-                            <p:panel header="#{bundleadmin.ListArticuloTitle}">
-                                <p:dataTable id="datalist" value="#{articuloController.items}" var="itemArt"
+                                <p:dataTable id="datalist2" value="#{articuloController.items}" var="itemArt"
                                              selectionMode="single" selection="#{reparacionController.articulo}"
+                                             
+                                             paginatorPosition="bottom"
                                              paginator="true"
                                              rowKey="#{itemArt.artId}"
                                              rows="10"
@@ -161,8 +168,13 @@
                                         </f:facet>
                                         <h:outputText value="#{itemArt.cliId.cliNombres} #{item.cliId.cliApellidos}"/>
                                     </p:column>
+                                    <p:column headerText="" style="width: 60px">
+              
+                                        <p:commandButton title="Seleccionar" style="margin-left: 5px;" action="#{reparacionController.seleccionarArticulo(itemArt)}" ajax="false">                                    
+                                            <p:graphicImage  library="images" name="articulo-articulo.png"/>
+                                        </p:commandButton>
+                                    </p:column>                                      
                                 </p:dataTable>
-                            </p:panel>
                         </h:form>
                     </p:panel>
                 </p:tab>

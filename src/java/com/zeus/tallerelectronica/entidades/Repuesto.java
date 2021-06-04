@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author AcerF5w10
+ * @author Usuario
  */
 @Entity
 @Table(name = "repuesto")
@@ -56,7 +56,7 @@ public class Repuesto implements Serializable {
     private String repuDescripcion;
     @Column(name = "REPU_PRECIO")
     private Integer repuPrecio;
-    @JoinTable(name = "tiene_asociados_repu", joinColumns = {
+    @JoinTable(name = "tiene_asociados_repuesto", joinColumns = {
         @JoinColumn(name = "REPU_ID", referencedColumnName = "REPU_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "REPA_ID_NUMORDEN", referencedColumnName = "REPA_ID_NUMORDEN")})
     @ManyToMany

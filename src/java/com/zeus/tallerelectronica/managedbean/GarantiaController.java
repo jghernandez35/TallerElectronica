@@ -48,10 +48,12 @@ public class GarantiaController implements Serializable {
     private GarantiaFacade getFacade() {
         return ejbFacade;
     }
+
     //carga la lista Inicial
-    public String cargarLista(){
+    public String cargarLista() {
         return "/admin/garantia/List";
     }
+
     public Garantia prepareCreate() {
         selected = new Garantia();
         initializeEmbeddableKey();
@@ -59,18 +61,18 @@ public class GarantiaController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundleadmin").getString("GarantiaCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle2").getString("GarantiaCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundleadmin").getString("GarantiaUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle2").getString("GarantiaUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundleadmin").getString("GarantiaDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle2").getString("GarantiaDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
@@ -103,11 +105,11 @@ public class GarantiaController implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundleadmin").getString("PersistenceErrorOccured"));
+                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle2").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundleadmin").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle2").getString("PersistenceErrorOccured"));
             }
         }
     }
