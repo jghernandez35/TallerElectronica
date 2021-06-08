@@ -48,15 +48,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliNombres}"/>
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliNombresCompletos}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cliNombres}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliApellidos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliApellidos}"/>
+                            <h:outputText value="#{item.cliNombres} #{item.cliApellidos}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -66,27 +60,15 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono1}"/>
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cliTelefono1}"/>
+                            <h:outputText value="#{item.cliTelefono1}-#{item.cliTelefono2}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliTelefono2}"/>
+                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoalt}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cliTelefono2}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoaltnombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliContactoaltnombre}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundleadmin.ListClienteTitle_cliContactoalttelefono}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cliContactoalttelefono}"/>
+                            <h:outputText value="#{item.cliContactoaltnombre}-#{item.cliContactoalttelefono}"/>
                         </p:column>
                         <p:column headerText="Acciones" style="width: 60px">                         
                             <p:commandLink title="Artículos" style="margin-left: 5px;" action="#{articuloController.prepareGestionArticulosCliente(item)}" ajax="false">                                    

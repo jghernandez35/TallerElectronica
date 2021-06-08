@@ -67,7 +67,7 @@ public class ArticuloController implements Serializable {
     public void setEjbFacadeArticulo(ArticuloFacade ejbFacadeArticulo) {
         this.ejbFacadeArticulo = ejbFacadeArticulo;
     }
-
+    
     public GarantiaFacade getEjbFacadeGarantia() {
         return ejbFacadeGarantia;
     }
@@ -79,7 +79,7 @@ public class ArticuloController implements Serializable {
 //    public List<Articulo> getArticulos_cliente() {
 //        return articulos_cliente;
 //    }
-
+    
     public void setArticulos_cliente(List<Articulo> articulos_cliente) {
         this.articulos_cliente = articulos_cliente;
     }
@@ -120,7 +120,7 @@ public class ArticuloController implements Serializable {
         //garantia = null;
         //cliente = null;
     }
-    //** carga la lista de articulos
+    // carga la lista de articulos
     public String cargarLista(){
         return "/admin/articulo/List";
     }
@@ -175,20 +175,21 @@ public class ArticuloController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-    //**prepara la lista de articulos asociados a un cliente, el cliente llega desde ClienteController
-    public String prepareGestionArticulosCliente(Cliente cli){   
+       
+    //prepara la lista de articulos asociados a un cliente, el cliente llega desde ClienteController
+    public void prepareGestionArticulosCliente(Cliente cli){   
         System.out.println("En prepareGestionArticulosCliente(Cliente cli)");
         cliente = cli;
-        return "/admin/articulo/List_articulos_cliente";
+        //return "/admin/articulo/List_articulos_cliente";
     }
-
+    
     public List<Articulo> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
         return items;
     }
-
+    
     //**internamente se ejecuta consulta para sacar los Articulos asociados a un Cliente mediante el id 
     public List<Articulo> getArticulos_cliente() {
         articulos_cliente=getEjbFacadeArticulo().listarArticulosCliente(cliente.getCliId());
@@ -200,7 +201,7 @@ public class ArticuloController implements Serializable {
     }
     // se saca la fecha del sistema y se hace un split por espacio para sacarla mas adecuadamente
     // fecha del sistema = Wed Nov 14 08:15:22 COT 2018
-    // fecha despues del split = 14 Nov 2018 solo se sava dia mes y año
+    // fecha despues del split = 14 Nov 2018 solo se salva dia mes y año
     public String getCurrentDate3() {
         String fecha = currentDate.toString();
         //System.out.println(fecha);// Wed Nov 14 08:15:22 COT 2018

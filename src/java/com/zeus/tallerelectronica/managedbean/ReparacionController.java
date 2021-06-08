@@ -71,9 +71,10 @@ public class ReparacionController implements Serializable {
         this.skip = skip;
     }
     
+    
     public String onFlowProcess(FlowEvent event) {
             if(skip) {
-                    skip = false;	//reset in case user goes back
+                    skip = false;	//reiniciar en caso de que el usuario vuelva-reset in case user goes back
                     return "confirm";
             }
             else {
@@ -119,9 +120,11 @@ public class ReparacionController implements Serializable {
         return "/admin/reparacion/List";
     }
     
-    //crear nueva orden de servicio
+    //crear nueva orden de servicio Junio 2021
     public String crearNuevaOrden(){
-        return "/admin/reparacion/CreateReparacion";
+        cliente = new Cliente();
+        articulo = new Articulo();
+        return "/admin/reparacion/CrearReparacion";
     }    
     
     public Reparacion prepareCreate() {
